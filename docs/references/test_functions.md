@@ -1,9 +1,13 @@
 
 # Functions
 
+基本的な使い方は、Google Testと同じようになります。
+
 # Entry
 
-TEST(Title, Section)
+`TEST(Title, Section)`
+
+Title, Sectionの組み合わせは、一意である必要があります。
 
 # 基本的なアサーション
 
@@ -32,3 +36,7 @@ TEST(Title, Section)
 | `ASSERT_STRNE(str1, str2);`               | `EXPECT_STRNE(str1, str2);`                  | 2つの C 文字列の内容が等しくない                               |
 | `ASSERT_STRCASEEQ(expected_str, actual_str);` | `EXPECT_STRCASEEQ(expected_str, actual_str);` | 大文字小文字を無視した場合，2つの C 文字列の内容が等しい       |
 | `ASSERT_STRCASENE(str1, str2);`           | `EXPECT_STRCASENE(str1, str2);`              | 大文字小文字を無視した場合，2つの C 文字列の内容が等しくない   |
+
+# テストの実行
+
+`RUN_ALL_TESTS()`

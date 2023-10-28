@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "./"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"register_functions.h": "c",
+			"assert.h": "c"
+		}
+	}
+}
