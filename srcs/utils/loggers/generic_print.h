@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 17:42:44 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/28 18:05:32 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/29 16:40:23 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,17 @@
     const char const *: "%s" \
     )
 
-#define GENERIC_PRINT(X) \
-	do { \ 
+#define GENERIC_FPRINT(stream, X) \
+	do { \
 		char    format[30]; \
 		\
 		sprintf(format, "%s", FORMAT(X)); \
-		printf(format, X ); \
+		fprintf(stream, format, X ); \
 	} while(0) 
+
+# define GENERIC_FPRINT_BOOL(stream, BOOL) \
+    do { \
+        fprintf(stream, "%s", BOOL ? "true" : "false"); \
+    } while(0) \
 
 #endif

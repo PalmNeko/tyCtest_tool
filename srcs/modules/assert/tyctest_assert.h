@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 23:27:30 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/27 23:37:00 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/29 19:04:04 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,43 @@
 # define TYCTEST_ASSERT_H
 
 # include <string.h>
+# include "error_logger.h"
+# include "generic_print.h"
 
 char	*to_upper_case(char *str);
 char	*to_lower_case(char *str);
 
-#define ASSERT_TRUE(condition) \
-	assert(condition)
+# define LOG(OPERATOR, ACTUAL, EXPECTED, PLACE_LOG_FUNC, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
+do { \
+	const int	indent_size = 4; \
+\
+	PLACE_LOG_FUNC(__FILE__, __LINE__, 1 * indent_size, 0); \
+	STRING_LOG("Wish", "Actual " OPERATOR " Expected", 2 * indent_size, 8); \
+	ACTUAL_LOG_FUNC("Actual", ACTUAL, #ACTUAL, 2 *indent_size, 8); \
+	EXPECTED_LOG_FUNC("Expected", EXPECTED, #EXPECTED, 2 * indent_size, 8); \
+} while(0)
 
+# define ASSERT_LOG(OPERATOR, ACTUAL, EXPECTED, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
+	LOG(OPERATOR, ACTUAL, EXPECTED, \
+		PLACE_LOG_ABORT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
+
+
+# define ASSERT_CHECK(condition, LOG_PROC) \
+do { \
+	if (!(condition)) \
+	{ \
+		LOG_PROC; \
+		return ; \
+	} \
+} while(0)
+
+#define ASSERT_TRUE(condition) \
+	ASSERT_CHECK(condition, \
+		ASSERT_LOG("==", condition, "true", \
+			VALUE_LOG_BOOL, \
+			VALUE_LOG_STRING_RAW)) 
+
+/*
 #define ASSERT_FALSE(condition) \
 	assert(!condition)
 
@@ -71,6 +101,6 @@ char	*to_lower_case(char *str);
 		free(cast_expected); \
 		free(cast_actual); \
 	} while(0)
-
+*/
 
 #endif

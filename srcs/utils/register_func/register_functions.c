@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 22:23:38 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/27 23:25:48 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/29 16:41:38 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	register_func(t_test_function test_function)
 
 void	call_function(int index)
 {
-	assert(0 < index && index < g_func_cnt); // TODO: 実行前にアサート設定を修正する。
+	assert(0 <= index && index < g_func_cnt); // TODO: 実行前にアサート設定を修正する。
 	g_test_func[index]();
 }
 
