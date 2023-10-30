@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tyctest_assert_log_base.h                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/30 11:27:04 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/30 11:56:39 by tookuyam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef TYCTEST_ASSERT_LOG_BASE_H
+# define TYCTEST_ASSERT_LOG_BASE_H
+
+# include <string.h>
+# include "error_logger.h"
+# include "generic_print.h"
+
+# define LOG(OPERATOR, ACTUAL, EXPECTED, PLACE_LOG_FUNC, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
+do { \
+	const int	indent_size = 4; \
+\
+	PLACE_LOG_FUNC(__FILE__, __LINE__, 1 * indent_size, 0); \
+	STRING_LOG("Wish", "Actual " OPERATOR " Expected", 2 * indent_size, 8); \
+	ACTUAL_LOG_FUNC("Actual", ACTUAL, #ACTUAL, 2 *indent_size, 8); \
+	EXPECTED_LOG_FUNC("Expected", EXPECTED, #EXPECTED, 2 * indent_size, 8); \
+} while(0)
+
+# define ASSERT_LOG(OPERATOR, ACTUAL, EXPECTED, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
+	LOG(OPERATOR, ACTUAL, EXPECTED, \
+		PLACE_LOG_ABORT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
+
+
+# define ASSERT_CHECK(condition, LOG_PROC) \
+do { \
+	if (!(condition)) \
+	{ \
+		LOG_PROC; \
+		return ; \
+	} \
+} while(0)
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 14:55:11 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/29 18:27:01 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:57:08 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 # include <stdlib.h>
 # include "generic_print.h"
 # include "utils_str.h"
-
-void	error_log_bool(int actual, int expected);
-void	error_log_str(char *actual, char *expected);
 
 int		is_raw_number(char *str);
 
