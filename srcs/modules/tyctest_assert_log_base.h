@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:27:04 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/30 11:56:39 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:00:30 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ do { \
 # define ASSERT_LOG(OPERATOR, ACTUAL, EXPECTED, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
 	LOG(OPERATOR, ACTUAL, EXPECTED, \
 		PLACE_LOG_ABORT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
-
 
 # define ASSERT_CHECK(condition, LOG_PROC) \
 do { \
