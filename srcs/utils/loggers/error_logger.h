@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 14:55:11 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 15:35:31 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:31:26 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int		is_raw_number(char *str);
  * @param MSG_WIDTH (number) output message width(left alignment)
  */
 # define STRING_LOG(MSG, VALUE, INDENT_NUM, MSG_WIDTH) \
-		VALUE_LOG_STRING(MSG, VALUE, VALUE, INDENT_NUM, MSG_WIDTH)
+		VALUE_LOG_STRING_RAW(MSG, VALUE, VALUE, INDENT_NUM, MSG_WIDTH)
 
 /**
  * log value.
