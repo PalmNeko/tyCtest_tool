@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:27:04 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 18:32:51 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:49:11 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,32 @@ do { \
 		LOG_PROC; \
 		*failure_flag = 1; /* failure_flag is argument (ref. register_functions.h) */ \
 		return ; \
+	} \
+} while(0)
+
+/**
+ * expect log.
+ * @param OPERATOR (char *) compare operator (==, !=, <, <=, >, >=)
+ * @param ACTUAL (raw) actual value.
+ * @param EXPECTED (raw) expected value.
+ * @param ACTUAL_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
+ * @param EXPECTED_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
+ */
+# define EXPECT_LOG(OPERATOR, ACTUAL, EXPECTED, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
+	LOG(OPERATOR, ACTUAL, EXPECTED, \
+		PLACE_LOG_EXPECT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
+
+/**
+ * checker when expect. output expect log and return if conditions are not met.
+ * @param condition (value) condition
+ * @param LOG_PROC (code) code when conditions are not met.
+ */
+# define EXPECT_CHECK(condition, LOG_PROC) \
+do { \
+	if (!(condition)) \
+	{ \
+		LOG_PROC; \
+		*failure_flag = 1; /* failure_flag is argument (ref. register_functions.h) */ \
 	} \
 } while(0)
 

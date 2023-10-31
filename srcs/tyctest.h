@@ -5,6 +5,7 @@
 # include "register_functions.h"
 # include "register_macro.h"
 # include "assert_functions.h"
+# include "expect_functions.h"
 
 /**
  * create tests.

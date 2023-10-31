@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 14:55:11 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 18:31:26 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:47:48 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ int		is_raw_number(char *str);
 # define PLACE_LOG_ABORT(FILE_NAME, LINE, INDENT_NUM, MSG_WIDTH) \
 	PLACE_LOG("\033[31mAbort\033[m", FILE_NAME, LINE, INDENT_NUM, MSG_WIDTH); \
 
+/**
+ * log place for abort.
+ * @param FILE_NAME (char *) file name
+ * @param LINE (char *) line number.
+ * @param INDENT_NUM (number) indent space cnt.
+ * @param MSG_WIDTH (number) output message width(left alignment)
+ */
+# define PLACE_LOG_EXPECT(FILE_NAME, LINE, INDENT_NUM, MSG_WIDTH) \
+	PLACE_LOG("\033[33mError\033[m", FILE_NAME, LINE, INDENT_NUM, MSG_WIDTH); \
 /**
  * log string. around `"`
  * @param MSG (char *) message

@@ -1,45 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   expect_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 16:30:01 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 18:50:31 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/31 18:42:35 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/31 18:50:59 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tyctest.h"
+#ifndef EXPECT_FUNCTIONS_H
+# define EXPECT_FUNCTIONS_H
 
-TEST(Gtester, Test)
-{
-	ASSERT_TRUE(1);
-}
+# include "error_logger.h"
+# include "generic_print.h"
+# include "tyctest_assert_log_base.h"
 
-TEST(Gtester, Test2)
-{
-	EXPECT_TRUE(0);
-	EXPECT_TRUE(0);
-	EXPECT_TRUE(1);
-	EXPECT_TRUE(1);
-	EXPECT_TRUE(0);
-	EXPECT_TRUE(0);
-	ASSERT_TRUE(0);
-}
+/**
+ * test that condition is equal to true.
+ * @param condition condition
+ */
+# define EXPECT_TRUE(condition) \
+	EXPECT_CHECK(condition, \
+		EXPECT_LOG("==", condition, "true", \
+			VALUE_LOG_BOOL, \
+			VALUE_LOG_STRING_RAW)) 
 
-TEST(Gtester1, Test)
-{
-	ASSERT_TRUE(1);
-}
-
-TEST(Gtester1, Test2)
-{
-	ASSERT_TRUE(1);
-}
-
-int	main(void)
-{
-	RUN_ALL_TESTS();
-	return (0);
-}
+#endif
