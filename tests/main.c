@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 16:30:01 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 18:24:06 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:29:20 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ TEST(Gtester, Test)
 
 TEST(Gtester, Test2)
 {
+	ASSERT_FALSE(1);
 	ASSERT_TRUE(0);
 }
 

@@ -38,4 +38,15 @@
 			VALUE_LOG_BOOL, \
 			VALUE_LOG_STRING_RAW)) 
 
+/**
+ * test that condition is equal to false.
+ * @throw
+ * @param condition condition
+ */
+#define ASSERT_FALSE(condition) \
+	ASSERT_CHECK(!condition, \
+		ASSERT_LOG("==", condition, "false", \
+			VALUE_LOG_BOOL, \
+			VALUE_LOG_STRING_RAW)) 
+
 #endif
