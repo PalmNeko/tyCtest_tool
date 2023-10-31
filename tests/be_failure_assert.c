@@ -14,14 +14,10 @@
 
 TEST(BeFailure, ASSERT_TRUE)
 {
-	ASSERT_TRUE(1);
 	ASSERT_TRUE(0);
-	fprintf(stderr, "should not reach\n");
 }
 
 TEST(BeFailure, ASSERT_FALSE)
 {
-	ASSERT_FALSE(0);
 	ASSERT_FALSE(1);
-	fprintf(stderr, "should not reach\n");
 }

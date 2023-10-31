@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   be_failure_expect.c                                :+:      :+:    :+:   */
+/*   be_success_experct.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:59:54 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 19:00:03 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/31 22:24:43 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/31 22:24:43 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tyctest.h"
 
-TEST(BeFailure, EXPECT_TRUE)
+TEST(BeSuccess, EXPECT_TRUE)
 {
-	EXPECT_TRUE(0);
+	EXPECT_TRUE(1);
 }
