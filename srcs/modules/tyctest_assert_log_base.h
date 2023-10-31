@@ -32,7 +32,8 @@ do { \
 	const int	indent_size = 4; \
 \
 	PLACE_LOG_FUNC(__FILE__, __LINE__, 1 * indent_size, 0); \
-	STRING_LOG("Wish", "Actual " BLUE OPERATOR CL " Expected", 2 * indent_size, 8); \
+	fprintf(stderr, "%*s%-*s: Actual %s Expected\n", \
+		2 * indent_size, "", 8, "Wish", BLUE OPERATOR CL); \
 	ACTUAL_LOG_FUNC("Actual", ACTUAL, #ACTUAL, 2 *indent_size, 8); \
 	EXPECTED_LOG_FUNC("Expected", EXPECTED, #EXPECTED, 2 * indent_size, 8); \
 } while(0)
@@ -50,6 +51,18 @@ do { \
 		PLACE_LOG_ABORT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
 
 /**
+ * expect log.
+ * @param OPERATOR (char *) compare operator (==, !=, <, <=, >, >=)
+ * @param ACTUAL (raw) actual value.
+ * @param EXPECTED (raw) expected value.
+ * @param ACTUAL_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
+ * @param EXPECTED_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
+ */
+# define EXPECT_LOG(OPERATOR, ACTUAL, EXPECTED, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
+	LOG(OPERATOR, ACTUAL, EXPECTED, \
+		PLACE_LOG_EXPECT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
+
+/**
  * checker when assert. output assert log and return if conditions are not met.
  * @param condition (value) condition
  * @param LOG_PROC (code) code when conditions are not met.
@@ -63,18 +76,6 @@ do { \
 		return ; \
 	} \
 } while(0)
-
-/**
- * expect log.
- * @param OPERATOR (char *) compare operator (==, !=, <, <=, >, >=)
- * @param ACTUAL (raw) actual value.
- * @param EXPECTED (raw) expected value.
- * @param ACTUAL_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
- * @param EXPECTED_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
- */
-# define EXPECT_LOG(OPERATOR, ACTUAL, EXPECTED, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
-	LOG(OPERATOR, ACTUAL, EXPECTED, \
-		PLACE_LOG_EXPECT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
 
 /**
  * checker when expect. output expect log and return if conditions are not met.
