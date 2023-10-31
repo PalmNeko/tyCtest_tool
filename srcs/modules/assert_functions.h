@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:36:46 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 18:40:17 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:41:54 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * @throw
  * @param condition condition
  */
-#define ASSERT_TRUE(condition) \
+# define ASSERT_TRUE(condition) \
 	ASSERT_CHECK(condition, \
 		ASSERT_LOG("==", condition, "true", \
 			VALUE_LOG_BOOL, \
@@ -33,7 +33,7 @@
  * @throw
  * @param condition condition
  */
-#define ASSERT_FALSE(condition) \
+# define ASSERT_FALSE(condition) \
 	ASSERT_CHECK(!condition, \
 		ASSERT_LOG("==", condition, "false", \
 			VALUE_LOG_BOOL, \
