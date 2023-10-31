@@ -23,8 +23,10 @@
     short: "%d", \
     int: "%d", \
     long: "%ld", \
+    long long: "%lld", \
     unsigned int: "%u", \
     unsigned long: "%lu", \
+    unsigned long long: "%llu", \
     float: "%.5e", \
     double: "%.5le", \
     char: "%c", \
@@ -43,7 +45,7 @@
 		\
 		sprintf(format, "%s", FORMAT(X)); \
 		fprintf(stream, format, X ); \
-	} while(0) 
+	} while(0)
 
 /**
  * generic print. output `BOOL` as boolean string.

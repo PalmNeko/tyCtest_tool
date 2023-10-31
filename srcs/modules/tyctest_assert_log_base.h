@@ -27,40 +27,40 @@
  * @param ACTUAL_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
  * @param EXPECTED_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
  */
-# define LOG(OPERATOR, ACTUAL, EXPECTED, PLACE_LOG_FUNC, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
+# define LOG(OPERATOR, EXPECTED, ACTUAL, PLACE_LOG_FUNC, EXPECTED_LOG_FUNC, ACTUAL_LOG_FUNC) \
 do { \
 	const int	indent_size = 4; \
 \
 	PLACE_LOG_FUNC(__FILE__, __LINE__, 1 * indent_size, 0); \
-	fprintf(stderr, "%*s%-*s: Actual %s Expected\n", \
+	fprintf(stderr, "%*s%-*s: Expected %s Actual\n", \
 		2 * indent_size, "", 8, "Wish", BLUE OPERATOR CL); \
-	ACTUAL_LOG_FUNC("Actual", ACTUAL, #ACTUAL, 2 *indent_size, 8); \
 	EXPECTED_LOG_FUNC("Expected", EXPECTED, #EXPECTED, 2 * indent_size, 8); \
+	ACTUAL_LOG_FUNC("Actual", ACTUAL, #ACTUAL, 2 *indent_size, 8); \
 } while(0)
 
 /**
  * Assert log.
  * @param OPERATOR (char *) compare operator (==, !=, <, <=, >, >=)
- * @param ACTUAL (raw) actual value.
  * @param EXPECTED (raw) expected value.
+ * @param ACTUAL (raw) actual value.
  * @param ACTUAL_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
  * @param EXPECTED_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
  */
-# define ASSERT_LOG(OPERATOR, ACTUAL, EXPECTED, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
-	LOG(OPERATOR, ACTUAL, EXPECTED, \
-		PLACE_LOG_ABORT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
+# define ASSERT_LOG(OPERATOR, EXPECTED, ACTUAL, EXPECTED_LOG_FUNC, ACTUAL_LOG_FUNC) \
+	LOG(OPERATOR, EXPECTED, ACTUAL, \
+		PLACE_LOG_ABORT, EXPECTED_LOG_FUNC, ACTUAL_LOG_FUNC)
 
 /**
  * expect log.
  * @param OPERATOR (char *) compare operator (==, !=, <, <=, >, >=)
- * @param ACTUAL (raw) actual value.
  * @param EXPECTED (raw) expected value.
+ * @param ACTUAL (raw) actual value.
  * @param ACTUAL_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
  * @param EXPECTED_LOG_FUNC (log macro) value log macro (ref. error_logger.h)
  */
-# define EXPECT_LOG(OPERATOR, ACTUAL, EXPECTED, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC) \
-	LOG(OPERATOR, ACTUAL, EXPECTED, \
-		PLACE_LOG_EXPECT, ACTUAL_LOG_FUNC, EXPECTED_LOG_FUNC)
+# define EXPECT_LOG(OPERATOR, EXPECTED, ACTUAL, EXPECTED_LOG_FUNC, ACTUAL_LOG_FUNC) \
+	LOG(OPERATOR, EXPECTED, ACTUAL, \
+		PLACE_LOG_EXPECT, EXPECTED_LOG_FUNC, ACTUAL_LOG_FUNC)
 
 /**
  * checker when assert. output assert log and return if conditions are not met.

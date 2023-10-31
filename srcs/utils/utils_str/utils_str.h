@@ -15,4 +15,11 @@
 
 char	*trimchr(char *str, char trim);
 
+#ifdef WINDOWS
+
+char *strndup(char *str, size_t len);
+
+#endif
+
+
 #endif

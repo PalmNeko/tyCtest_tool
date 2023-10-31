@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "tyctest.h"
+#include <limits.h>
 
 TEST(BeSuccess, EXPECT_TRUE)
 {
@@ -20,4 +21,9 @@ TEST(BeSuccess, EXPECT_TRUE)
 TEST(BeSuccess, EXPECT_FALSE)
 {
 	EXPECT_FALSE(0);
+}
+
+TEST(BeSuccess, EXPECT_EQ)
+{
+	EXPECT_EQ((long)((unsigned long long)LONG_MAX + 1), LONG_MIN);
 }

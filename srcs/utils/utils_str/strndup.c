@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   be_failure_expect.c                                :+:      :+:    :+:   */
+/*   strndup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:59:54 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 19:00:03 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/31 23:31:57 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/31 23:31:57 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tyctest.h"
-#include <limits.h>
+#include <string.h>
+#include <stdlib.h>
 
-TEST(BeFailure, EXPECT_TRUE)
+#ifdef WINDOWS
+
+char *strndup(char *str, size_t len)
 {
-	EXPECT_TRUE(0);
+	size_t	str_len;
+	char	*copy;
+
+	str_len = strnlen(str, len);
+	copy = (char *)malloc(sizeof(char) * (str_len + 1));
+	if (copy == NULL)
+		return (NULL);
+	strncpy(copy, str, str_len);
+	return (copy);
 }
 
-TEST(BeFailure, EXPECT_FALSE)
-{
-	EXPECT_FALSE(1);
-}
-
-TEST(BeFailure, EXPECT_EQ)
-{
-	EXPECT_EQ(ULLONG_MAX, (unsigned long long) 0);
-}
+#endif

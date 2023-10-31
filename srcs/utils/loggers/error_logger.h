@@ -55,7 +55,7 @@ int		is_raw_number(char *str);
  * log string. around `"`
  * @param MSG (char *) message
  * @param RESULT (char *) value
- * @param ARG (char *) argument 
+ * @param ARG (char *) argument
  * @param INDENT_NUM (number) indent space cnt.
  * @param MSG_WIDTH (number) output message width(left alignment)
  */
@@ -112,7 +112,7 @@ int		is_raw_number(char *str);
 /**
  * log value.
  * @param MSG (char *) message
- * @param RESULT (any number) RESULT of ARG 
+ * @param RESULT (any number) RESULT of ARG
  * @param ARG (char *) ARG of string.
  * @param INDENT_NUM (number) indent space cnt.
  * @param MSG_WIDTH (number) output message width(left alignment)
@@ -122,7 +122,7 @@ int		is_raw_number(char *str);
 		fprintf (stderr, "%*s%-*s: ", \
 			INDENT_NUM, "", MSG_WIDTH, MSG); \
 		GENERIC_FPRINT(stderr, RESULT); \
-		if (is_raw_number(ARG)) \
+		if (!is_raw_number(ARG)) \
 			fprintf(stderr, " <- %s", ARG); \
 		fprintf(stderr, "\n"); \
 	} while (0)
@@ -130,7 +130,7 @@ int		is_raw_number(char *str);
 /**
  * log value for boolean.
  * @param MSG (char *) message
- * @param RESULT (any nubmer) RESULT of ARG 
+ * @param RESULT (any nubmer) RESULT of ARG
  * @param ARG (char *) ARG of string.
  * @param INDENT_NUM (number) indent space cnt.
  * @param MSG_WIDTH (number) output message width(left alignment)

@@ -24,9 +24,9 @@
  */
 # define ASSERT_TRUE(condition) \
 	ASSERT_CHECK(condition, \
-		ASSERT_LOG("==", condition, "true", \
-			VALUE_LOG_BOOL, \
-			VALUE_LOG_STRING_RAW))
+		ASSERT_LOG("==", "true", condition, \
+			VALUE_LOG_STRING_RAW, \
+			VALUE_LOG_BOOL))
 
 /**
  * test that condition is equal to false.
@@ -35,8 +35,8 @@
  */
 # define ASSERT_FALSE(condition) \
 	ASSERT_CHECK(!(condition), \
-		ASSERT_LOG("==", condition, "false", \
-			VALUE_LOG_BOOL, \
-			VALUE_LOG_STRING_RAW))
+		ASSERT_LOG("==", "false", condition, \
+			VALUE_LOG_STRING_RAW, \
+			VALUE_LOG_BOOL))
 
 #endif
