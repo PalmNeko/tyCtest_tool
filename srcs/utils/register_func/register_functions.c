@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 22:23:38 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 17:38:17 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:42:39 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,44 +61,21 @@ void	register_func(t_test_function test_function, char *title, char *section)
 }
 
 /**
- * run test info
- * @param tset_info run test function info.
+ * get group 
+ * @param register_info register function info
  */
-int	run_test(t_test_info *test_info)
-{
-	int	failure_cnt;
-
-	failure_cnt = 0;
-	fprintf(stdout, BLUE "[ RUN      ]" CL " %s.%s\n",
-		test_info->title, test_info->section);
-	test_info->test_function(&failure_cnt);
-	if (failure_cnt == 0)
-		fprintf(stdout, GREEN "[       OK ]" CL " %s.%s\n",
-			test_info->title, test_info->section);
-	else
-		fprintf(stdout, RED "[  FAILED  ]" CL " %s.%s\n",
-			test_info->title, test_info->section);
-	return (failure_cnt);
-}
-
-/**
- * run group tests
- * @param group group of target.
- */
-int	run_group_tests(t_test_group *group)
+static t_test_group	*get_test_group(t_test_info *register_info)
 {
 	int	index;
-	int	failure_cnt;
 
-	fprintf(stdout, BLUE "[----------]" CL " %d tests from %s\n",
-		group->stored_cnt, group->title);
 	index = 0;
-	failure_cnt = 0;
-	while (index < group->stored_cnt)
-		failure_cnt += run_test(&group->child_tests[index++]);
-	fprintf(stdout, BLUE "[----------]" CL " %d tests from %s\n\n",
-		group->stored_cnt, group->title);
-	return (failure_cnt);
+	while (index < g_func_cnt)
+	{
+		if (strcmp(g_test_groups[index].title, register_info->title))
+			return (&g_test_groups[index]);
+		index++;
+	}
+	return (NULL);
 }
 
 /**
@@ -126,19 +103,42 @@ int	run_all_group_tests(void)
 }
 
 /**
- * get group 
- * @param register_info register function info
+ * run group tests
+ * @param group group of target.
  */
-static t_test_group	*get_test_group(t_test_info *register_info)
+int	run_group_tests(t_test_group *group)
 {
 	int	index;
+	int	failure_cnt;
 
+	fprintf(stdout, BLUE "[----------]" CL " %d tests from %s\n",
+		group->stored_cnt, group->title);
 	index = 0;
-	while (index < g_func_cnt)
-	{
-		if (strcmp(g_test_groups[index].title, register_info->title))
-			return (&g_test_groups[index]);
-		index++;
-	}
-	return (NULL);
+	failure_cnt = 0;
+	while (index < group->stored_cnt)
+		failure_cnt += run_test(&group->child_tests[index++]);
+	fprintf(stdout, BLUE "[----------]" CL " %d tests from %s\n\n",
+		group->stored_cnt, group->title);
+	return (failure_cnt);
+}
+
+/**
+ * run test info
+ * @param tset_info run test function info.
+ */
+int	run_test(t_test_info *test_info)
+{
+	int	failure_cnt;
+
+	failure_cnt = 0;
+	fprintf(stdout, BLUE "[ RUN      ]" CL " %s.%s\n",
+		test_info->title, test_info->section);
+	test_info->test_function(&failure_cnt);
+	if (failure_cnt == 0)
+		fprintf(stdout, GREEN "[       OK ]" CL " %s.%s\n",
+			test_info->title, test_info->section);
+	else
+		fprintf(stdout, RED "[  FAILED  ]" CL " %s.%s\n",
+			test_info->title, test_info->section);
+	return (failure_cnt);
 }
