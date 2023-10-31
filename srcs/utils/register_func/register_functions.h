@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 22:24:18 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 17:17:40 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:58:13 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define MAX_TEST_FUNCTIONS (1024)
 # define MAX_CHILD_TESTS (256)
+# define MAX_FAILURE_TESTS (8192)
 
 typedef void(*t_test_function)(int *failure_flag);
 
@@ -30,6 +31,12 @@ typedef struct s_test_functions {
 	int			stored_cnt;
 	char		*title;
 }	t_test_group;
+
+typedef struct s_failure_tests_info {
+	t_test_info	*failure_tests[MAX_FAILURE_TESTS];
+	int			stored_cnt;
+	int			over_flag;
+}	t_failure_tests_info;
 
 void	register_func(t_test_function test_function, char *title, char *section);
 void	call_function(char *title, char *section);
