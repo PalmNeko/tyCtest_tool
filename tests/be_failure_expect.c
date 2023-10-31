@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   be_failure_expect.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 16:30:01 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 19:00:16 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/31 18:59:54 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/31 19:00:03 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tyctest.h"
 
-int	main(void)
+TEST(BeFailure, EXPECT_TRUE)
 {
-	RUN_ALL_TESTS();
-	return (0);
+	EXPECT_TRUE(0);
+	EXPECT_TRUE(1);
+	EXPECT_TRUE(0);
 }

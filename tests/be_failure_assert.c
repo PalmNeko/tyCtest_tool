@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   be_failure_assert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 16:30:01 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 19:00:16 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/10/31 18:59:03 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/10/31 18:59:16 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tyctest.h"
 
-int	main(void)
+TEST(BeFailure, ASSERT_TRUE)
 {
-	RUN_ALL_TESTS();
-	return (0);
+	ASSERT_TRUE(1);
+	ASSERT_TRUE(0);
+	fprintf(stderr, "should not reach\n");
+}
+
+TEST(BeFailure, ASSERT_FALSE)
+{
+	ASSERT_FALSE(0);
+	ASSERT_FALSE(1);
+	fprintf(stderr, "should not reach\n");
 }
