@@ -63,7 +63,7 @@ void	register_func(t_test_function test_function, char *title, char *section)
 }
 
 /**
- * get group 
+ * get group
  * @param register_info register function info
  */
 static t_test_group	*get_test_group(t_test_info *register_info)
@@ -87,4 +87,14 @@ int	run_all_group_tests(void)
 {
 	run_test_groups(g_test_groups, g_func_cnt);
 	return (0);
+}
+
+t_test_group *get_test_groups(void)
+{
+	return (g_test_groups);
+}
+
+int	get_test_groups_cnt(void)
+{
+	return (g_func_cnt);
 }

@@ -11,9 +11,38 @@
 /* ************************************************************************** */
 
 #include "tyctest.h"
+#include <string.h>
 
-int	main(void)
+int	split_group_section(char *value, char **group, char **section)
 {
-	RUN_ALL_TESTS();
+	char	*tmp;
+
+	tmp = strchr(value, '.');
+	if (tmp == NULL)
+		return (-1);
+	*group = value;
+	*section = tmp + 1;
+	*tmp = '\0';
+	return (0);
+}
+
+int	main(int argc, char *argv[])
+{
+	int		index;
+	char	*group;
+	char	*section;
+
+	if (argc == 1)
+	{
+		RUN_ALL_TESTS();
+		return (0);
+	}
+	index = 1;
+	while (index < argc)
+	{
+		split_group_section(argv[index], &group, &section);
+		RUN_TEST(group, section);
+		index++;
+	}
 	return (0);
 }

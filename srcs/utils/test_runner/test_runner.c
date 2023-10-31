@@ -100,10 +100,36 @@ int	run_test(t_test_info *test_info, t_failure_tests_info *failure_info)
 	{
 		fprintf(stdout, RED "[  FAILED  ]" CL " %s.%s\n",
 			test_info->title, test_info->section);
-		if (failure_info->stored_cnt >= MAX_FAILURE_TESTS)
+		if (failure_info != NULL && failure_info->stored_cnt >= MAX_FAILURE_TESTS)
 			failure_info->over_flag = 1;
-		else
+		else if (failure_info != NULL)
 			failure_info->failure_tests[failure_info->stored_cnt++] = test_info;
 	}
 	return (failure_cnt);
+}
+
+void run_test_with_str(char *group_name, char *section)
+{
+	t_test_group	*test_groups;
+	t_test_group	*target_group;
+	int				groups_cnt;
+	int				group_index;
+	int				section_index;
+
+	test_groups = get_test_groups();
+	groups_cnt = get_test_groups_cnt();
+	group_index = 0;
+	while (group_index < groups_cnt
+		&& strcmp(test_groups[group_index].title, group_name) != 0)
+		group_index++;
+	if (group_index >= groups_cnt)
+		return ;
+	target_group = &test_groups[group_index];
+	section_index = 0;
+	while (section_index < target_group->stored_cnt
+		&& strcmp(target_group->child_tests[section_index].section, section) != 0)
+		section_index++;
+	if (section_index >= target_group->stored_cnt)
+		return ;
+	run_test(&target_group->child_tests[section_index], NULL);
 }

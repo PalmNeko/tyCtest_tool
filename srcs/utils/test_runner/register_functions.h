@@ -38,8 +38,10 @@ typedef struct s_failure_tests_info {
 	int			over_flag;
 }	t_failure_tests_info;
 
-void	register_func(t_test_function test_function, char *title, char *section);
-void	call_function(char *title, char *section);
-int		run_all_group_tests(void);
+void			register_func(t_test_function test_function, char *title, char *section);
+void			call_function(char *title, char *section);
+int				run_all_group_tests(void);
+t_test_group	*get_test_groups(void);
+int				get_test_groups_cnt(void);
 
 #endif
