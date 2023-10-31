@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:27:04 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 15:45:07 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:23:23 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ do { \
 	if (!(condition)) \
 	{ \
 		LOG_PROC; \
+		*failure_flag = 1; /* failure_flag is argument (ref. register_functions.h) */ \
 		return ; \
 	} \
 } while(0)

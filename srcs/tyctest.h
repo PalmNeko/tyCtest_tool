@@ -18,14 +18,14 @@
  * }
  */
 # define TEST(TITLE, SECTION) \
-	void TITLE ## SECTION (void); \
+	void TITLE ## SECTION (int *failure_flag); /* this function format is defined `register_functions.h`*/ \
 	REGISTER_TEST(TITLE, SECTION) \
-	void TITLE ## SECTION (void)
+	void TITLE ## SECTION (int *failure_flag) /* this function format is defined `register_functions.h`*/
 
 /**
  * run all created tests.
  */
-# define RUN_ALL_TESTS() call_all_functions()
+# define RUN_ALL_TESTS() run_all_group_tests()
 
 /**
  * test that condition is equal to true.
