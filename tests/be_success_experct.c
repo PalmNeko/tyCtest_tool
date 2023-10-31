@@ -16,3 +16,8 @@ TEST(BeSuccess, EXPECT_TRUE)
 {
 	EXPECT_TRUE(1);
 }
+
+TEST(BeSuccess, EXPECT_FALSE)
+{
+	EXPECT_FALSE(0);
+}
