@@ -8,7 +8,8 @@
 		"files.associations": {
 			"register_functions.h": "c",
 			"assert.h": "c",
-			"error_logger.h": "c"
+			"error_logger.h": "c",
+			"tyctest_assert_log_base.h": "c"
 		}
 	}
 }
