@@ -6,13 +6,18 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:05:34 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/29 18:19:17 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:13:52 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
 
+/**
+ * trim `trim` from both ends of `str`.
+ * @param str target
+ * @param trim trim character
+ */
 char	*trimchr(char *str, char trim)
 {
 	size_t	len;

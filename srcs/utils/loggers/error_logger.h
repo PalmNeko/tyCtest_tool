@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 14:55:11 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/30 11:57:08 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:35:31 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,33 @@ int		is_raw_number(char *str);
 
 /**
  * log place.
+ * @param MSG (char *) message
+ * @param FILE_NAME (char *) file name
+ * @param LINE (char *) line number.
+ * @param INDENT_NUM (number) indent space cnt.
+ * @param MSG_WIDTH (number) output message width(left alignment)
  */
-# define PLACE_LOG(MSG, FILE_NAME, LINE, INDENT, MSG_WIDTH) \
+# define PLACE_LOG(MSG, FILE_NAME, LINE, INDENT_NUM, MSG_WIDTH) \
 	fprintf(stderr, "%*s%-*s: %s:%d\n", \
-		INDENT, "", MSG_WIDTH, MSG, FILE_NAME, LINE)
-
-# define PLACE_LOG_ABORT(FILE_NAME, LINE, INDENT, MSG_WIDTH) \
-	PLACE_LOG("\033[31mAbort\033[m", FILE_NAME, LINE, INDENT, MSG_WIDTH); \
+		INDENT_NUM, "", MSG_WIDTH, MSG, FILE_NAME, LINE)
 
 /**
- * log string.
+ * log place for abort.
+ * @param FILE_NAME (char *) file name
+ * @param LINE (char *) line number.
+ * @param INDENT_NUM (number) indent space cnt.
+ * @param MSG_WIDTH (number) output message width(left alignment)
+ */
+# define PLACE_LOG_ABORT(FILE_NAME, LINE, INDENT_NUM, MSG_WIDTH) \
+	PLACE_LOG("\033[31mAbort\033[m", FILE_NAME, LINE, INDENT_NUM, MSG_WIDTH); \
+
+/**
+ * log string. around `"`
  * @param MSG (char *) message
  * @param RESULT (char *) value
  * @param ARG (char *) argument 
+ * @param INDENT_NUM (number) indent space cnt.
+ * @param MSG_WIDTH (number) output message width(left alignment)
  */
 # define VALUE_LOG_STRING(MSG, RESULT, ARG, INDENT_NUM, MSG_WIDTH) \
 	do { \
@@ -52,6 +66,14 @@ int		is_raw_number(char *str);
 		free(trimmed); \
 	} while (0)
 
+/**
+ * log string. not around `"`
+ * @param MSG (char *) message
+ * @param RESULT (char *) value
+ * @param ARG (char *) argument
+ * @param INDENT_NUM (number) indent space cnt.
+ * @param MSG_WIDTH (number) output message width(left alignment)
+ */
 # define VALUE_LOG_STRING_RAW(MSG, RESULT, ARG, INDENT_NUM, MSG_WIDTH) \
 	do { \
 		char	*trimmed; \
@@ -72,7 +94,8 @@ int		is_raw_number(char *str);
  * Log string.
  * @param MSG (char *) message
  * @param VALUE (char *) value
- * @param INDENT_NUM (int) insert space
+ * @param INDENT_NUM (number) indent space cnt.
+ * @param MSG_WIDTH (number) output message width(left alignment)
  */
 # define STRING_LOG(MSG, VALUE, INDENT_NUM, MSG_WIDTH) \
 		VALUE_LOG_STRING(MSG, VALUE, VALUE, INDENT_NUM, MSG_WIDTH)
@@ -82,6 +105,8 @@ int		is_raw_number(char *str);
  * @param MSG (char *) message
  * @param RESULT (any number) RESULT of ARG 
  * @param ARG (char *) ARG of string.
+ * @param INDENT_NUM (number) indent space cnt.
+ * @param MSG_WIDTH (number) output message width(left alignment)
 */
 # define VALUE_LOG_NUM(MSG, RESULT, ARG, INDENT_NUM, MSG_WIDTH) \
 	do { \
@@ -98,6 +123,8 @@ int		is_raw_number(char *str);
  * @param MSG (char *) message
  * @param RESULT (any nubmer) RESULT of ARG 
  * @param ARG (char *) ARG of string.
+ * @param INDENT_NUM (number) indent space cnt.
+ * @param MSG_WIDTH (number) output message width(left alignment)
 */
 # define VALUE_LOG_BOOL(MSG, RESULT, ARG, INDENT_NUM, MSG_WIDTH) \
 	do { \
