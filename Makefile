@@ -17,6 +17,10 @@ ifeq ($(MAKECMDGOALS), debug)
 	CFLAGS += -g -fsanitize=address
 endif
 
+ifeq ($(OS),Windows_NT)
+	CFLAGS += -D WINDOWS
+endif
+
 # directories
 MAKEFILE_DIR = $(dir $(lastword $(MAKEFILE_LIST)))
 PROJECT_ROOT = $(MAKEFILE_DIR)
@@ -39,7 +43,7 @@ COMPILE_OBJ = $(COMPILE_SRC:.c=.o)
 
 # all rule
 all: $(NAME)
-# all: 
+# all:
 
 # make files rules
 $(NAME): $(COMPILE_OBJ) $(INCS)

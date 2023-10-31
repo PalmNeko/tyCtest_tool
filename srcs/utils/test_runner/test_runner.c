@@ -36,13 +36,13 @@ int run_test_groups(t_test_group g_test_groups[], int	g_func_cnt)
 	groups_cnt = index;
 	failure_info.over_flag = 0;
 	failure_info.stored_cnt = 0;
-	fprintf(stdout, BLUE "[==========]" CL " Running %d tests from %d test groups.\n",
+	fprintf(stdout, DARK_BLUE "[==========]" CL " Running %d tests from %d test groups.\n",
 		tests_cnt, groups_cnt);
 	index = 0;
 	failure_cnt = 0;
 	while (index < g_func_cnt)
 		failure_cnt += run_group_tests(&g_test_groups[index++], &failure_info);
-	fprintf(stdout, BLUE "[==========]" CL " Finished %d tests from %d test groups.\n",
+	fprintf(stdout, DARK_BLUE "[==========]" CL " Finished %d tests from %d test groups.\n",
 		tests_cnt, groups_cnt);
 	fprintf(stdout, GREEN "[  PASSED  ]" CL " %d tests.\n",
 		tests_cnt - failure_cnt);
@@ -70,13 +70,13 @@ int	run_group_tests(t_test_group *group, t_failure_tests_info *failure_info)
 	int	index;
 	int	failure_cnt;
 
-	fprintf(stdout, BLUE "[----------]" CL " %d tests from %s\n",
+	fprintf(stdout, DARK_BLUE "[----------]" CL " %d tests from %s\n",
 		group->stored_cnt, group->title);
 	index = 0;
 	failure_cnt = 0;
 	while (index < group->stored_cnt)
 		failure_cnt += run_test(&group->child_tests[index++], failure_info);
-	fprintf(stdout, BLUE "[----------]" CL " %d tests from %s\n\n",
+	fprintf(stdout, DARK_BLUE "[----------]" CL " %d tests from %s\n\n",
 		group->stored_cnt, group->title);
 	return (failure_cnt);
 }
@@ -90,7 +90,7 @@ int	run_test(t_test_info *test_info, t_failure_tests_info *failure_info)
 	int	failure_cnt;
 
 	failure_cnt = 0;
-	fprintf(stdout, BLUE "[ RUN      ]" CL " %s.%s\n",
+	fprintf(stdout, DARK_BLUE "[ RUN      ]" CL " %s.%s\n",
 		test_info->title, test_info->section);
 	test_info->test_function(&failure_cnt);
 	if (failure_cnt == 0)
