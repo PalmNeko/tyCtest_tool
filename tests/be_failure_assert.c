@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:59:03 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 12:47:26 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:22:53 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,35 @@ TEST(BeFailure, ASSERT_GT)
 TEST(BeFailure, ASSERT_GE)
 {
 	ASSERT_GE(29, 30);
+}
+
+TEST(BeFailure, ASSERT_STREQ)
+{
+	ASSERT_STREQ("a", "b");
+	ASSERT_STREQ("", "b");
+	ASSERT_STREQ("a", "");
+}
+
+TEST(BeFailure, ASSERT_STRNE)
+{
+	ASSERT_STRNE("", "");
+	ASSERT_STRNE("a", "a");
+	ASSERT_STRNE("abc", "abc");
+}
+
+TEST(BeFailure, ASSERT_STRCASEEQ)
+{
+	ASSERT_STRCASEEQ("","A");
+	ASSERT_STRCASEEQ("A","");
+	ASSERT_STRCASEEQ("B","a");
+	ASSERT_STRCASEEQ("a","B");
+}
+
+TEST(BeFailure, ASSERT_STRCASENE)
+{
+	ASSERT_STRCASENE("", "");
+	ASSERT_STRCASENE("a", "A");
+	ASSERT_STRCASENE("abc", "ABC");
+	ASSERT_STRCASENE("A", "a");
+	ASSERT_STRCASENE("ABC", "abc");
 }

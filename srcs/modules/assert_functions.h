@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:36:46 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 12:45:58 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:21:21 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,53 @@
 		ASSERT_LOG(">=", expected, actual, \
 			VALUE_LOG_NUM, \
 			VALUE_LOG_NUM))
+
+/**
+ * test that expected is equal to actual.
+ * @throw
+ * @param expected expected value
+ * @param actual actual value
+ */
+# define ASSERT_STREQ(expected, actual) \
+	ASSERT_CHECK(strcmp(expected, actual) == 0, \
+		ASSERT_LOG("==", expected, actual, \
+			VALUE_LOG_STRING, \
+			VALUE_LOG_STRING))
+
+/**
+ * test that expected is not equal to actual.
+ * @throw
+ * @param expected expected value
+ * @param actual actual value
+ */
+# define ASSERT_STRNE(expected, actual) \
+	ASSERT_CHECK(strcmp(expected, actual) != 0, \
+		ASSERT_LOG("!=", expected, actual, \
+			VALUE_LOG_STRING, \
+			VALUE_LOG_STRING))
+
+/**
+ * test that expected is equal to actual. ignore character case.
+ * @throw
+ * @param expected expected value
+ * @param actual actual value
+ */
+# define ASSERT_STRCASEEQ(expected, actual) \
+	ASSERT_CHECK(stricmp(expected, actual) == 0, \
+		ASSERT_LOG("==", expected, actual, \
+			VALUE_LOG_STRING, \
+			VALUE_LOG_STRING))
+
+/**
+ * test that expected is not equal to actual. ignore character case.
+ * @throw
+ * @param expected expected value
+ * @param actual actual value
+ */
+# define ASSERT_STRCASENE(expected, actual) \
+	ASSERT_CHECK(stricmp(expected, actual) != 0, \
+		ASSERT_LOG("!=", expected, actual, \
+			VALUE_LOG_STRING, \
+			VALUE_LOG_STRING))
 
 #endif
