@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:42:35 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 18:50:59 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:15:11 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,55 @@
 		EXPECT_LOG("==", expected, actual, \
 			VALUE_LOG_NUM, \
 			VALUE_LOG_NUM))
+
+/**
+ * test that expected is not equal to actual.
+ * @param expected actual
+ */
+# define EXPECT_NE(expected, actual) \
+	EXPECT_CHECK((expected != actual), \
+		EXPECT_LOG("!=", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is less than actual.
+ * @param expected actual
+ */
+# define EXPECT_LT(expected, actual) \
+	EXPECT_CHECK((expected < actual), \
+		EXPECT_LOG("<", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is less than or equal to actual.
+ * @param expected actual
+ */
+# define EXPECT_LE(expected, actual) \
+	EXPECT_CHECK((expected <= actual), \
+		EXPECT_LOG("<=", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is greater than to actual.
+ * @param expected actual
+ */
+# define EXPECT_GT(expected, actual) \
+	EXPECT_CHECK((expected > actual), \
+		EXPECT_LOG(">", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is greater than or equal to actual.
+ * @param expected actual
+ */
+# define EXPECT_GE(expected, actual) \
+	EXPECT_CHECK((expected >= actual), \
+		EXPECT_LOG(">=", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
 #endif

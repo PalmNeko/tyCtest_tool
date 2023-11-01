@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:16:01 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 12:04:38 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:31:35 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,16 @@ static void	strrev(char *str)
 	size_t	len;
 	size_t	index;
 
+
+	// fprintf(stderr, "\nstart: %s\n", str);
 	len = strlen(str);
 	index = 0;
 	while(index < len / 2)
 	{
-		swap(&str[index], &str[len - index]);
+		swap(&str[index], &str[len - index - 1]);
 		index++;
 	}
+	// fprintf(stderr, "\nend: %s\n", str);
 	return ;
 }
 
