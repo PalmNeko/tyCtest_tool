@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:42:35 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 12:15:11 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:17:26 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "error_logger.h"
 # include "generic_print.h"
 # include "tyctest_assert_log_base.h"
+# include <string.h>
+# include "utils_str.h"
 
 /**
  * test that condition is equal to true.
@@ -96,5 +98,49 @@
 		EXPECT_LOG(">=", expected, actual, \
 			VALUE_LOG_NUM, \
 			VALUE_LOG_NUM))
+
+/**
+ * test that expected is equal to actual.
+ * @param expected expected value
+ * @param actual actual value
+ */
+# define EXPECT_STREQ(expected, actual) \
+	EXPECT_CHECK(strcmp(expected, actual) == 0, \
+		EXPECT_LOG("==", expected, actual, \
+			VALUE_LOG_STRING, \
+			VALUE_LOG_STRING))
+
+/**
+ * test that expected is not equal to actual.
+ * @param expected expected value
+ * @param actual actual value
+ */
+# define EXPECT_STRNE(expected, actual) \
+	EXPECT_CHECK(strcmp(expected, actual) != 0, \
+		EXPECT_LOG("!=", expected, actual, \
+			VALUE_LOG_STRING, \
+			VALUE_LOG_STRING))
+
+/**
+ * test that expected is equal to actual. ignore character case.
+ * @param expected expected value
+ * @param actual actual value
+ */
+# define EXPECT_STRCASEEQ(expected, actual) \
+	EXPECT_CHECK(stricmp(expected, actual) == 0, \
+		EXPECT_LOG("==", expected, actual, \
+			VALUE_LOG_STRING, \
+			VALUE_LOG_STRING))
+
+/**
+ * test that expected is not equal to actual. ignore character case.
+ * @param expected expected value
+ * @param actual actual value
+ */
+# define EXPECT_STRCASENE(expected, actual) \
+	EXPECT_CHECK(stricmp(expected, actual) != 0, \
+		EXPECT_LOG("!=", expected, actual, \
+			VALUE_LOG_STRING, \
+			VALUE_LOG_STRING))
 
 #endif

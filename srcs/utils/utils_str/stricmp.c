@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_str.h                                        :+:      :+:    :+:   */
+/*   stricmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 18:10:01 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 13:13:00 by tookuyam         ###   ########.fr       */
+/*   Created: 2023/11/01 13:08:25 by tookuyam          #+#    #+#             */
+/*   Updated: 2023/11/01 13:13:03 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_STR_H
-# define UTILS_STR_H
+#include <stdlib.h>
+#include <ctype.h>
 
-char	*trimchr(char *str, char trim);
-int		stricmp(const char *string1, const char *string2);
-
-#ifdef WINDOWS
-
-char *strndup(char *str, size_t len);
-
-#endif
-
-#ifdef MAC
-
-char	*lltoa(long long value, char *buffer, int base);
-char	*ulltoa(unsigned long long value, char *buffer, int base);
-
-#endif
-
-#endif
+int	stricmp(const char *string1, const char *string2)
+{
+	while (*string1 != '\0' && *string1 != '\0')
+	{
+		if (toupper(*string1) != toupper(*string2))
+			return ((int)toupper(*string1) - toupper(*string2));
+		string1++;
+		string2++;
+	}
+	return ((int)toupper(*string1) - toupper(*string2));
+}

@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:24:43 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 12:22:53 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:17:01 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,37 @@ TEST(BeSuccess, EXPECT_GE)
 	EXPECT_GE(30, 29);
 	EXPECT_GE(30, 30);
 	EXPECT_GE(0, -1);
+}
+
+TEST(BeSuccess, EXPECT_STREQ)
+{
+	EXPECT_STREQ("", "");
+	EXPECT_STREQ("a", "a");
+	EXPECT_STREQ("abc", "abc");
+}
+
+TEST(BeSuccess, EXPECT_STRNE)
+{
+	EXPECT_STRNE("","a");
+	EXPECT_STRNE("a","");
+	EXPECT_STRNE("b","a");
+	EXPECT_STRNE("a","b");
+	EXPECT_STRNE("a","A");
+}
+
+TEST(BeSuccess, EXPECT_STRCASEEQ)
+{
+	EXPECT_STRCASEEQ("", "");
+	EXPECT_STRCASEEQ("a", "A");
+	EXPECT_STRCASEEQ("abc", "ABC");
+	EXPECT_STRCASEEQ("A", "a");
+	EXPECT_STRCASEEQ("ABC", "abc");
+}
+
+TEST(BeSuccess, EXPECT_STRCASENE)
+{
+	EXPECT_STRCASENE("","A");
+	EXPECT_STRCASENE("A","");
+	EXPECT_STRCASENE("B","a");
+	EXPECT_STRCASENE("a","B");
 }
