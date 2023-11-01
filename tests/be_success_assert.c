@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:23:09 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 12:47:23 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 13:22:49 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,37 @@ TEST(BeSuccess, ASSERT_GE)
 	ASSERT_GE(30, 29);
 	ASSERT_GE(30, 30);
 	ASSERT_GE(0, -1);
+}
+
+TEST(BeSuccess, ASSERT_STREQ)
+{
+	ASSERT_STREQ("", "");
+	ASSERT_STREQ("a", "a");
+	ASSERT_STREQ("abc", "abc");
+}
+
+TEST(BeSuccess, ASSERT_STRNE)
+{
+	ASSERT_STRNE("","a");
+	ASSERT_STRNE("a","");
+	ASSERT_STRNE("b","a");
+	ASSERT_STRNE("a","b");
+	ASSERT_STRNE("a","A");
+}
+
+TEST(BeSuccess, ASSERT_STRCASEEQ)
+{
+	ASSERT_STRCASEEQ("", "");
+	ASSERT_STRCASEEQ("a", "A");
+	ASSERT_STRCASEEQ("abc", "ABC");
+	ASSERT_STRCASEEQ("A", "a");
+	ASSERT_STRCASEEQ("ABC", "abc");
+}
+
+TEST(BeSuccess, ASSERT_STRCASENE)
+{
+	ASSERT_STRCASENE("","A");
+	ASSERT_STRCASENE("A","");
+	ASSERT_STRCASENE("B","a");
+	ASSERT_STRCASENE("a","B");
 }
