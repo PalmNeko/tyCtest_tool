@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:36:46 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 18:41:54 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:45:58 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,71 @@
 		ASSERT_LOG("==", "false", condition, \
 			VALUE_LOG_STRING_RAW, \
 			VALUE_LOG_BOOL))
+
+/**
+ * test that expected is equal to actual.
+ * @throw
+ * @param expected actual
+ */
+# define ASSERT_EQ(expected, actual) \
+	ASSERT_CHECK((expected == actual), \
+		ASSERT_LOG("==", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is not equal to actual.
+ * @throw
+ * @param expected actual
+ */
+# define ASSERT_NE(expected, actual) \
+	ASSERT_CHECK((expected != actual), \
+		ASSERT_LOG("!=", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is less than actual.
+ * @throw
+ * @param expected actual
+ */
+# define ASSERT_LT(expected, actual) \
+	ASSERT_CHECK((expected < actual), \
+		ASSERT_LOG("<", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is less than or equal to actual.
+ * @throw
+ * @param expected actual
+ */
+# define ASSERT_LE(expected, actual) \
+	ASSERT_CHECK((expected <= actual), \
+		ASSERT_LOG("<=", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is greater than to actual.
+ * @throw
+ * @param expected actual
+ */
+# define ASSERT_GT(expected, actual) \
+	ASSERT_CHECK((expected > actual), \
+		ASSERT_LOG(">", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
+
+/**
+ * test that expected is greater than or equal to actual.
+ * @throw
+ * @param expected actual
+ */
+# define ASSERT_GE(expected, actual) \
+	ASSERT_CHECK((expected >= actual), \
+		ASSERT_LOG(">=", expected, actual, \
+			VALUE_LOG_NUM, \
+			VALUE_LOG_NUM))
 
 #endif
