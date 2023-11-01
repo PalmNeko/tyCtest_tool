@@ -6,15 +6,16 @@
 #    By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/29 15:29:13 by tookuyam          #+#    #+#              #
-#    Updated: 2023/11/01 11:15:10 by tookuyam         ###   ########.fr        #
+#    Updated: 2023/11/01 13:38:52 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # NAME
-NAME = "test"
-ifeq ($(MAKECMDGOALS), debug)
+NAME = "libtyctest.a"
+ifeq ($(MAKECMDGOALS), test)
 	NAME = "test"
 	CFLAGS += -g -fsanitize=address
+	COMPILE_SRC += $(TEST)
 endif
 
 ifeq ($(OS),Windows_NT)
@@ -40,19 +41,21 @@ CFLAGS += -Wall -Werror -Wextra -std=c17 $(addprefix -I,$(INC_DIRS))
 
 SRC =  $(shell find $(SRC_DIR) -name "*.c")
 TEST = $(shell find $(TEST_DIR) -name "*.c")
-COMPILE_SRC = $(SRC) $(TEST)
+COMPILE_SRC += $(SRC)
 COMPILE_OBJ = $(COMPILE_SRC:.c=.o)
 
 # all rule
 all: $(NAME)
-# all:
 
 # make files rules
 $(NAME): $(COMPILE_OBJ) $(INCS)
-	$(CC) $(CFLAGS) -o $(NAME) $(filter %.o,$^)
+	ar rcs $(NAME) $(filter %.o,$^)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+test: $(COMPILE_OBJ) $(INCS)
+	$(CC) $(CFLAGS) -o $(NAME) $(filter %.o,$^)
 
 # .PHONY rules
 clean:

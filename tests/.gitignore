@@ -1,0 +1,4 @@
+#!/bin/sh
+
+includes/
+libs
