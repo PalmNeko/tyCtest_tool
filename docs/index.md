@@ -3,4 +3,4 @@
 
 # References
 
-* (./references/test_functions.md)[test_functions]
+* [test_functions](./references/test_functions.md)

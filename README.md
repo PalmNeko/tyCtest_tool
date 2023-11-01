@@ -15,7 +15,7 @@ test tool for lang c.(42Tokyo)
 
 # Docs
 
-(./docs/index.md)[docs]
+[docs](./docs/index.md)
 
 # Usage
 
