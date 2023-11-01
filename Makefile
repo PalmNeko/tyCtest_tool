@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/29 15:29:13 by tookuyam          #+#    #+#              #
-#    Updated: 2023/11/01 13:38:52 by tookuyam         ###   ########.fr        #
+#    Updated: 2023/11/01 14:29:50 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,9 @@ all: $(NAME)
 # make files rules
 $(NAME): $(COMPILE_OBJ) $(INCS)
 	ar rcs $(NAME) $(filter %.o,$^)
+
+libtyctest_main.a: tests/main.o
+	ar rcs libtyctest_main.a $(filter %.o,$^)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
