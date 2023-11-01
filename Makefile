@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/29 15:29:13 by tookuyam          #+#    #+#              #
-#    Updated: 2023/10/29 16:54:40 by tookuyam         ###   ########.fr        #
+#    Updated: 2023/11/01 11:15:10 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ endif
 
 ifeq ($(OS),Windows_NT)
 	CFLAGS += -D WINDOWS
+else
+	CFLAGS += -D MAC
 endif
 
 # directories
@@ -34,7 +36,7 @@ $(shell mkdir -p $(OBJ_DIR))
 # compiles
 CC = cc
 INCS = $(shell find $(PROJECT_ROOT) -type f -name "*.h")
-CFLAGS += -Wall -Werror -Wextra $(addprefix -I,$(INC_DIRS))
+CFLAGS += -Wall -Werror -Wextra -std=c17 $(addprefix -I,$(INC_DIRS))
 
 SRC =  $(shell find $(SRC_DIR) -name "*.c")
 TEST = $(shell find $(TEST_DIR) -name "*.c")

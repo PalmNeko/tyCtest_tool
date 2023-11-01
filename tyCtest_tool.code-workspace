@@ -11,7 +11,8 @@
 			"error_logger.h": "c",
 			"tyctest_assert_log_base.h": "c",
 			"tyctest.h": "c",
-			"assert_functions.h": "c"
+			"assert_functions.h": "c",
+			"stdlib.h": "c"
 		}
 	}
 }

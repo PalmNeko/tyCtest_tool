@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 17:42:44 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 15:28:53 by tookuyam         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:59:28 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
     double: "%.5le", \
     char: "%c", \
     char *: "%s", \
-    const char const *: "%s" \
+    const char *: "%s" \
     )
 
 /**
