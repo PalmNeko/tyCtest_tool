@@ -31,22 +31,18 @@
  * @throw
  * @param condition condition
  */
-# define ASSERT_TRUE(condition) \
-	ASSERT_CHECK(condition, \
-		ASSERT_LOG("==", "true", condition, \
-			VALUE_LOG_STRING_RAW, \
-			VALUE_LOG_BOOL))
+# define ASSERT_TRUE(condition) do { \
+	TEST_BOOL(true, condition, "==", NUM_EQ, "assert_eq", "\033[31mAbort\033[m"); \
+} while (0);
 
 /**
  * test that condition is equal to false.
  * @throw
  * @param condition condition
  */
-# define ASSERT_FALSE(condition) \
-	ASSERT_CHECK(!(condition), \
-		ASSERT_LOG("==", "false", condition, \
-			VALUE_LOG_STRING_RAW, \
-			VALUE_LOG_BOOL))
+# define ASSERT_FALSE(condition) do { \
+	TEST_BOOL(false, condition, "==", NUM_EQ, "assert_eq", "\033[31mAbort\033[m"); \
+} while (0);
 
 /**
  * test that expected is equal to actual.
