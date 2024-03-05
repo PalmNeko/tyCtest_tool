@@ -13,8 +13,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifdef WINDOWS
-
 char *strndup(char *str, size_t len)
 {
 	size_t	str_len;
@@ -27,5 +25,3 @@ char *strndup(char *str, size_t len)
 	strncpy(copy, str, str_len);
 	return (copy);
 }
-
-#endif

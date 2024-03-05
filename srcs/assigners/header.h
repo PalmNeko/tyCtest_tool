@@ -99,8 +99,8 @@ void	*assign_const_char_pointer(void **variable, const char *value);
 	float: *(float *)VAR_VOID_PTR, \
 	double: *(double *)VAR_VOID_PTR, \
 	char: *(char *)VAR_VOID_PTR, \
-	char *: *(char **)VAR_VOID_PTR, \
-	const char *: *(const char **)VAR_VOID_PTR \
+	char *: (char *)VAR_VOID_PTR, \
+	const char *: (const char *)VAR_VOID_PTR \
 )
 
 /**
@@ -181,6 +181,37 @@ void log_print(t_log_info *);
 				.value_ptr = actual_val, \
 				.type = actual_type, \
 				.print_type = "bool"},\
+			.ope = operator, \
+			.line = __LINE__, \
+			.filename = __FILE__, \
+		}); \
+		*failure_flag = 1; \
+	} \
+	\
+} while(0)
+
+#define TEST_STRING(expect, actual, operator, condition_macro, test_name_str, msg_str) do { \
+	void *expect_val = NULL; \
+	void *actual_val = NULL; \
+	char *expect_type = GET_TYPE(expect); \
+	char *actual_type = GET_TYPE(actual); \
+	ASSIGN(expect)(&expect_val, expect); \
+	ASSIGN(actual)(&actual_val, actual); \
+	if (!(condition_macro(GET_VAL(expect_val, expect), GET_VAL(actual_val, actual)))) \
+	{ \
+		log_print(&(t_log_info) { \
+			.test_function_name = test_name_str, \
+			.caption = msg_str, \
+			.expect_info = (t_macro_argument_info) { \
+				.raw = #expect, \
+				.value_ptr = expect_val, \
+				.type = expect_type, \
+				.print_type = "string"},\
+			.actual_info = (t_macro_argument_info) { \
+				.raw = #actual, \
+				.value_ptr = actual_val, \
+				.type = actual_type, \
+				.print_type = "string"},\
 			.ope = operator, \
 			.line = __LINE__, \
 			.filename = __FILE__, \

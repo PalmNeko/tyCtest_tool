@@ -25,6 +25,10 @@
 # define NUM_LE(val1, val2) ((val1) <= (val2))
 # define NUM_GT(val1, val2) ((val1) > (val2))
 # define NUM_GE(val1, val2) ((val1) >= (val2))
+# define STR_EQ(val1, val2) (strcmp(val1, val2) == 0)
+# define STR_NE(val1, val2) (strcmp(val1, val2) != 0)
+# define STR_CASEEQ(val1, val2) (stricmp(val1, val2) == 0)
+# define STR_CASENE(val1, val2) (stricmp(val1, val2) != 0)
 
 /**
  * test that condition is equal to true.
@@ -109,11 +113,10 @@
  * @param expected expected value
  * @param actual actual value
  */
-# define ASSERT_STREQ(expected, actual) \
-	ASSERT_CHECK(strcmp(expected, actual) == 0, \
-		ASSERT_LOG("==", expected, actual, \
-			VALUE_LOG_STRING, \
-			VALUE_LOG_STRING))
+# define ASSERT_STREQ(expected, actual) do { \
+	TEST_STRING(expected, actual, "==", STR_EQ, "assert_streq", "\033[31mAbort\033[m"); \
+	if (*failure_flag != 0) return ; \
+} while (0)
 
 /**
  * test that expected is not equal to actual.
@@ -121,11 +124,10 @@
  * @param expected expected value
  * @param actual actual value
  */
-# define ASSERT_STRNE(expected, actual) \
-	ASSERT_CHECK(strcmp(expected, actual) != 0, \
-		ASSERT_LOG("!=", expected, actual, \
-			VALUE_LOG_STRING, \
-			VALUE_LOG_STRING))
+# define ASSERT_STRNE(expected, actual) do { \
+	TEST_STRING(expected, actual, "!=", STR_NE, "assert_strne", "\033[31mAbort\033[m"); \
+	if (*failure_flag != 0) return ; \
+} while (0)
 
 /**
  * test that expected is equal to actual. ignore character case.
@@ -133,11 +135,10 @@
  * @param expected expected value
  * @param actual actual value
  */
-# define ASSERT_STRCASEEQ(expected, actual) \
-	ASSERT_CHECK(stricmp(expected, actual) == 0, \
-		ASSERT_LOG("==", expected, actual, \
-			VALUE_LOG_STRING, \
-			VALUE_LOG_STRING))
+# define ASSERT_STRCASEEQ(expected, actual) do { \
+	TEST_STRING(expected, actual, "==", STR_CASEEQ, "assert_strcaseeq", "\033[31mAbort\033[m"); \
+	if (*failure_flag != 0) return ; \
+} while (0)
 
 /**
  * test that expected is not equal to actual. ignore character case.
@@ -145,10 +146,9 @@
  * @param expected expected value
  * @param actual actual value
  */
-# define ASSERT_STRCASENE(expected, actual) \
-	ASSERT_CHECK(stricmp(expected, actual) != 0, \
-		ASSERT_LOG("!=", expected, actual, \
-			VALUE_LOG_STRING, \
-			VALUE_LOG_STRING))
+# define ASSERT_STRCASENE(expected, actual)  do { \
+	TEST_STRING(expected, actual, "!=", STR_CASENE, "assert_strcaseeq", "\033[31mAbort\033[m"); \
+	if (*failure_flag != 0) return ; \
+} while (0)
 
 #endif
