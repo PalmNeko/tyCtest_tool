@@ -32,7 +32,7 @@
  * @param condition condition
  */
 # define ASSERT_TRUE(condition) do { \
-	TEST_BOOL(true, condition, "==", NUM_EQ, "assert_eq", "\033[31mAbort\033[m"); \
+	TEST_BOOL(true, condition, "==", NUM_EQ, "assert_true", "\033[31mAbort\033[m"); \
 } while (0);
 
 /**
@@ -41,7 +41,7 @@
  * @param condition condition
  */
 # define ASSERT_FALSE(condition) do { \
-	TEST_BOOL(false, condition, "==", NUM_EQ, "assert_eq", "\033[31mAbort\033[m"); \
+	TEST_BOOL(false, condition, "==", NUM_EQ, "assert_false", "\033[31mAbort\033[m"); \
 } while (0);
 
 /**
