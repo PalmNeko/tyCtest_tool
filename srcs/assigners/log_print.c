@@ -103,7 +103,16 @@ void log_print(t_log_info *info)
 		"", info->caption, info->filename, info->line);
 	fprintf(stderr, "%8s%-8s: Expected " BLUE"%s"CL " Actual\n",
 		"", "Wish",  info->ope);
+	fprintf(stderr, "\n");
+	if (strstr(info->test_function_name, "true") != NULL || strstr(info->test_function_name, "false") != NULL)
+		fprintf(stderr, "%8s%d : "BLUE"%s(%s)"CL"\n",
+			"", info->line, info->test_function_name, info->actual_info.raw);
+	else
+		fprintf(stderr, "%8s%d : "BLUE"%s(%s, %s)"CL"\n",
+			"", info->line, info->test_function_name, info->expect_info.raw, info->actual_info.raw);
+	fprintf(stderr, "\n");
 	output_t_macro_argument_info("Expected", info->expect_info);
 	output_t_macro_argument_info("Actual", info->actual_info);
+	fprintf(stderr, "\n");
 	return ;
 }
