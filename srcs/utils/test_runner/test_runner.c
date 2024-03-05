@@ -93,18 +93,18 @@ int	run_test(t_test_info *test_info, t_failure_tests_info *failure_info)
 	failure_cnt = 0;
 	fprintf(stdout, DARK_BLUE "[ RUN      ]" CL " %s.%s\n",
 		test_info->title, test_info->section);
-	test_info->test_function(&failure_cnt);
-	if (failure_cnt == 0)
+	reset_failure();
+	test_info->test_function();
+	if (is_failure() == false)
 		fprintf(stdout, GREEN "[       OK ]" CL " %s.%s\n",
 			test_info->title, test_info->section);
 	else
 	{
-		fprintf(stdout, RED "[  FAILED  ]" CL " %s.%s\n",
-			test_info->title, test_info->section);
 		if (failure_info != NULL && failure_info->stored_cnt >= MAX_FAILURE_TESTS)
 			failure_info->over_flag = 1;
 		else if (failure_info != NULL)
 			failure_info->failure_tests[failure_info->stored_cnt++] = test_info;
+		failure_cnt++;
 	}
 	return (failure_cnt);
 }

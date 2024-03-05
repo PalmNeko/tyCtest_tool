@@ -13,19 +13,34 @@
 #include <string.h>
 #include <stdlib.h>
 
-#ifdef WINDOWS
-
 char *strndup(char *str, size_t len)
 {
 	size_t	str_len;
+	size_t	str_size;
 	char	*copy;
 
 	str_len = strnlen(str, len);
-	copy = (char *)malloc(sizeof(char) * (str_len + 1));
+	str_size = str_len + 1;
+	copy = (char *)malloc(sizeof(char) * str_size);
 	if (copy == NULL)
 		return (NULL);
 	strncpy(copy, str, str_len);
+	copy[str_len] = '\0';
 	return (copy);
 }
 
-#endif
+char *strdup(const char *str)
+{
+	size_t	str_len;
+	size_t	str_size;
+	char	*copy;
+
+	str_len = strlen(str);
+	str_size = str_len + 1;
+	copy = (char *)malloc(sizeof(char) * str_size);
+	if (copy == NULL)
+		return (NULL);
+	strncpy(copy, str, str_len);
+	copy[str_len] = '\0';
+	return (copy);
+}

@@ -119,7 +119,7 @@ void	*assign_char_pointer(void **variable, char *value)
 	*variable = (void *)malloc(sizeof(char *));
 	if (*variable == NULL)
 		return (NULL);
-	*(char **)(*variable) = value;
+	*(char **)variable = value;
 	return (*variable);
 }
 
@@ -128,6 +128,6 @@ void	*assign_const_char_pointer(void **variable, const char *value)
 	*variable = (void *)malloc(sizeof(const char *));
 	if (*variable == NULL)
 		return (NULL);
-	*(const char **)(*variable) = value;
+	*(const char **)variable = value;
 	return (*variable);
 }

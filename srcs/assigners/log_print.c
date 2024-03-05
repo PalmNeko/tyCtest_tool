@@ -12,7 +12,7 @@
 
 #include "header.h"
 #include "terminal_coloring.h"
-#include "error_logger.h"
+#include "utils_str.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -39,8 +39,15 @@ void output_number(char *arg, void *result, void (*f_print)(void *value))
 
 void output_boolean(char *arg, int *value)
 {
-	fprintf(stderr, "%s", *value ? "true" : "false");
-	fprintf(stderr, " <- %s", arg);
+	char	*value_str;
+
+	if (*value == 0)
+		value_str = "false";
+	else
+		value_str = "true";
+	fprintf(stderr, "%s", value_str);
+	if (strcmp(value_str, arg) != 0)
+		fprintf(stderr, " <- %s", arg);
 }
 
 typedef void (*print_as_function)(void *value);
@@ -91,14 +98,21 @@ void output_t_macro_argument_info(const char *message, t_macro_argument_info inf
 
 void log_print(t_log_info *info)
 {
-	const int	indent_size = 4;
-
 	// message title
-	fprintf(stderr, "%*s%-*s: %s:%d\n",
-		1 * indent_size, "", 0, info->caption, info->filename, info->line);
-	fprintf(stderr, "%*s%-*s: Expected " BLUE"%s"CL " Actual\n", \
-		2 * indent_size, "", 8, "Wish",  info->ope );
+	fprintf(stderr, "%4s%-s: %s:%d\n",
+		"", info->caption, info->filename, info->line);
+	fprintf(stderr, "%8s%-8s: Expected " BLUE"%s"CL " Actual\n",
+		"", "Wish",  info->ope);
+	fprintf(stderr, "\n");
+	if (strstr(info->test_function_name, "true") != NULL || strstr(info->test_function_name, "false") != NULL)
+		fprintf(stderr, "%8s%d : "BLUE"%s(%s)"CL"\n",
+			"", info->line, info->test_function_name, info->actual_info.raw);
+	else
+		fprintf(stderr, "%8s%d : "BLUE"%s(%s, %s)"CL"\n",
+			"", info->line, info->test_function_name, info->expect_info.raw, info->actual_info.raw);
+	fprintf(stderr, "\n");
 	output_t_macro_argument_info("Expected", info->expect_info);
 	output_t_macro_argument_info("Actual", info->actual_info);
+	fprintf(stderr, "\n");
 	return ;
 }

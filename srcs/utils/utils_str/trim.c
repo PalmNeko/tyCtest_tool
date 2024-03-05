@@ -28,5 +28,7 @@ char	*trimchr(char *str, char trim)
 	len = strlen(str);
 	while (len != 0 && str[len - 1] == trim)
 		len--;
+	if (len == 0)
+		return (strdup(""));
 	return (strndup(str, len));
 }

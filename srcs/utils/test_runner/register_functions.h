@@ -17,7 +17,7 @@
 # define MAX_CHILD_TESTS (256)
 # define MAX_FAILURE_TESTS (8192)
 
-typedef void(*t_test_function)(int *failure_flag);
+typedef void(*t_test_function)(void);
 
 typedef struct s_test_info {
 	t_test_function	test_function;
