@@ -18,17 +18,7 @@
 # include "tyctest_assert_log_base.h"
 
 # include "header.h"
-
-# define NUM_EQ(val1, val2) ((val1) == (val2))
-# define NUM_NE(val1, val2) ((val1) != (val2))
-# define NUM_LT(val1, val2) ((val1) < (val2))
-# define NUM_LE(val1, val2) ((val1) <= (val2))
-# define NUM_GT(val1, val2) ((val1) > (val2))
-# define NUM_GE(val1, val2) ((val1) >= (val2))
-# define STR_EQ(val1, val2) (strcmp(val1, val2) == 0)
-# define STR_NE(val1, val2) (strcmp(val1, val2) != 0)
-# define STR_CASEEQ(val1, val2) (stricmp(val1, val2) == 0)
-# define STR_CASENE(val1, val2) (stricmp(val1, val2) != 0)
+# include "comparison.h"
 
 /**
  * test that condition is equal to true.
