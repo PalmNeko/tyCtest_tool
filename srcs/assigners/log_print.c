@@ -39,8 +39,15 @@ void output_number(char *arg, void *result, void (*f_print)(void *value))
 
 void output_boolean(char *arg, int *value)
 {
-	fprintf(stderr, "%s", *value ? "true" : "false");
-	fprintf(stderr, " <- %s", arg);
+	char	*value_str;
+
+	if (*value == 0)
+		value_str = "false";
+	else
+		value_str = "true";
+	fprintf(stderr, "%s", value_str);
+	if (strcmp(value_str, arg) != 0)
+		fprintf(stderr, " <- %s", arg);
 }
 
 typedef void (*print_as_function)(void *value);
