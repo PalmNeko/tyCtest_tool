@@ -13,6 +13,7 @@
 #include "terminal_coloring.h"
 #include "test_runner.h"
 #include "register_functions.h"
+#include "test_runner_adapter.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>

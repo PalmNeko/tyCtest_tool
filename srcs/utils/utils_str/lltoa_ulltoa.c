@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef MAC
-
 # include <string.h>
 # include <stdio.h>
 
@@ -25,7 +23,7 @@ static void	swap(char *s1, char *s2)
 	return ;
 }
 
-static void	strrev(char *str)
+static char *	mystrrev(char *str)
 {
 	size_t	len;
 	size_t	index;
@@ -40,7 +38,7 @@ static void	strrev(char *str)
 		index++;
 	}
 	// fprintf(stderr, "\nend: %s\n", str);
-	return ;
+	return (str);
 }
 
 char	*lltoa(long long value, char *buffer, int base)
@@ -63,7 +61,7 @@ char	*lltoa(long long value, char *buffer, int base)
 	if (minus_flag == 1)
 		buffer[index++] = '-';
 	buffer[index] = '\0';
-	strrev(buffer);
+	mystrrev(buffer);
 	return (buffer);
 }
 
@@ -79,8 +77,6 @@ char	*ulltoa(unsigned long long value, char *buffer, int base)
 		value /= base;
 	}
 	buffer[index] = '\0';
-	strrev(buffer);
+	mystrrev(buffer);
 	return (buffer);
 }
-
-#endif

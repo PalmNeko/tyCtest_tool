@@ -22,11 +22,7 @@ char *strndup(char *str, size_t len);
 
 #endif
 
-#ifdef MAC
-
 char	*lltoa(long long value, char *buffer, int base);
 char	*ulltoa(unsigned long long value, char *buffer, int base);
-
-#endif
 
 #endif

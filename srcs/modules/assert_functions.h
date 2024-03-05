@@ -17,6 +17,7 @@
 # include "generic_print.h"
 # include "tyctest_assert_log_base.h"
 
+# include "header.h"
 /**
  * test that condition is equal to true.
  * @throw
@@ -44,11 +45,17 @@
  * @throw
  * @param expected actual
  */
-# define ASSERT_EQ(expected, actual) \
+/* # define ASSERT_EQ(expected, actual) \
 	ASSERT_CHECK((expected == actual), \
 		ASSERT_LOG("==", expected, actual, \
 			VALUE_LOG_NUM, \
 			VALUE_LOG_NUM))
+ */
+# undef ASSERT_EQ
+#define NUM_EQ(val1, val2) ((val1) == (val2))
+# define ASSERT_EQ(expected, actual) do { \
+	TEST_NUMBER(expected, actual, "=|=", NUM_EQ, "assert_eq", "\033[31mAbort\033[m"); \
+} while (0);
 
 /**
  * test that expected is not equal to actual.

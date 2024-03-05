@@ -14,7 +14,7 @@
 NAME = "libtyctest.a"
 ifeq ($(MAKECMDGOALS), test)
 	NAME = "test"
-	CFLAGS += -g -fsanitize=address
+	CFLAGS += -g -O0
 	COMPILE_SRC += $(TEST)
 endif
 
@@ -62,7 +62,7 @@ test: $(COMPILE_OBJ) $(INCS)
 
 # .PHONY rules
 clean:
-	$(RM) $(COMPILE_OBJ)
+	find . -name "*.o" -delete
 
 fclean: clean
 	$(RM) $(NAME)
