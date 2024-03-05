@@ -3,6 +3,7 @@
 # define HEADER_H
 
 # include <stdbool.h>
+# include "test_runner_adapter.h"
 
 /**
  * print as functions
@@ -154,7 +155,7 @@ void log_print(t_log_info *);
 			.line = __LINE__, \
 			.filename = __FILE__, \
 		}); \
-		*failure_flag = 1; \
+		set_failure(); \
 	} \
 	\
 } while(0)
@@ -185,7 +186,7 @@ void log_print(t_log_info *);
 			.line = __LINE__, \
 			.filename = __FILE__, \
 		}); \
-		*failure_flag = 1; \
+		set_failure(); \
 	} \
 	\
 } while(0)
@@ -216,7 +217,7 @@ void log_print(t_log_info *);
 			.line = __LINE__, \
 			.filename = __FILE__, \
 		}); \
-		*failure_flag = 1; \
+		set_failure(); \
 	} \
 	\
 } while(0)

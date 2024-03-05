@@ -23,7 +23,7 @@
  */
 # define ASSERT_TRUE(condition) do { \
 	TEST_BOOL(true, condition, "==", NUM_EQ, "assert_true", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0);
 
 /**
@@ -33,7 +33,7 @@
  */
 # define ASSERT_FALSE(condition) do { \
 	TEST_BOOL(false, condition, "==", NUM_EQ, "assert_false", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0);
 
 /**
@@ -43,7 +43,7 @@
  */
 # define ASSERT_EQ(expected, actual) do { \
 	TEST_NUMBER(expected, actual, "==", NUM_EQ, "assert_eq", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0);
 
 /**
@@ -53,7 +53,7 @@
  */
 # define ASSERT_NE(expected, actual) do {\
 	TEST_NUMBER(expected, actual, "!=", NUM_NE, "assert_ne", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 /**
@@ -63,7 +63,7 @@
  */
 # define ASSERT_LT(expected, actual) do {\
 	TEST_NUMBER(expected, actual, "<", NUM_LT, "assert_lt", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 /**
@@ -73,7 +73,7 @@
  */
 # define ASSERT_LE(expected, actual) do {\
 	TEST_NUMBER(expected, actual, "<=", NUM_LE, "assert_le", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 /**
@@ -83,7 +83,7 @@
  */
 # define ASSERT_GT(expected, actual) do {\
 	TEST_NUMBER(expected, actual, ">", NUM_GT, "assert_gt", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 /**
@@ -93,7 +93,7 @@
  */
 # define ASSERT_GE(expected, actual) do {\
 	TEST_NUMBER(expected, actual, ">=", NUM_GE, "assert_ge", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 /**
@@ -104,7 +104,7 @@
  */
 # define ASSERT_STREQ(expected, actual) do { \
 	TEST_STRING(expected, actual, "==", STR_EQ, "assert_streq", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 /**
@@ -115,7 +115,7 @@
  */
 # define ASSERT_STRNE(expected, actual) do { \
 	TEST_STRING(expected, actual, "!=", STR_NE, "assert_strne", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 /**
@@ -126,7 +126,7 @@
  */
 # define ASSERT_STRCASEEQ(expected, actual) do { \
 	TEST_STRING(expected, actual, "==", STR_CASEEQ, "assert_strcaseeq", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 /**
@@ -137,7 +137,7 @@
  */
 # define ASSERT_STRCASENE(expected, actual)  do { \
 	TEST_STRING(expected, actual, "!=", STR_CASENE, "assert_strcaseeq", "\033[31mAbort\033[m"); \
-	if (*failure_flag != 0) return ; \
+	if (is_failure()) return ; \
 } while (0)
 
 #endif

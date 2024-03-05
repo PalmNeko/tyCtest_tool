@@ -13,8 +13,11 @@
 #ifndef UTILS_STR_H
 # define UTILS_STR_H
 
+#include <stddef.h>
+
 char	*trimchr(char *str, char trim);
 int		stricmp(const char *string1, const char *string2);
+int		is_raw_number(char *str);
 
 #ifdef WINDOWS
 

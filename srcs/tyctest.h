@@ -18,9 +18,9 @@
  * }
  */
 # define TEST(TITLE, SECTION) \
-	void TITLE ## SECTION (int *failure_flag); /* this function format is defined `register_functions.h`*/ \
+	void TITLE ## SECTION (void); /* this function format is defined `register_functions.h`*/ \
 	REGISTER_TEST(TITLE, SECTION) \
-	void TITLE ## SECTION (int *failure_flag) /* this function format is defined `register_functions.h`*/
+	void TITLE ## SECTION (void) /* this function format is defined `register_functions.h`*/
 
 /**
  * run all created tests.
