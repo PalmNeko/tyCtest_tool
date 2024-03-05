@@ -37,6 +37,7 @@
  */
 # define ASSERT_TRUE(condition) do { \
 	TEST_BOOL(true, condition, "==", NUM_EQ, "assert_true", "\033[31mAbort\033[m"); \
+	if (*failure_flag != 0) return ; \
 } while (0);
 
 /**
@@ -46,6 +47,7 @@
  */
 # define ASSERT_FALSE(condition) do { \
 	TEST_BOOL(false, condition, "==", NUM_EQ, "assert_false", "\033[31mAbort\033[m"); \
+	if (*failure_flag != 0) return ; \
 } while (0);
 
 /**
@@ -55,6 +57,7 @@
  */
 # define ASSERT_EQ(expected, actual) do { \
 	TEST_NUMBER(expected, actual, "==", NUM_EQ, "assert_eq", "\033[31mAbort\033[m"); \
+	if (*failure_flag != 0) return ; \
 } while (0);
 
 /**
