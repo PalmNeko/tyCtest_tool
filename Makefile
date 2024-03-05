@@ -26,8 +26,7 @@ endif
 CFLAGS += -MD -MP
 
 # directories
-MAKEFILE_DIR = $(dir $(lastword $(MAKEFILE_LIST)))
-PROJECT_ROOT = $(MAKEFILE_DIR)
+PROJECT_ROOT = .
 SRC_DIR = $(PROJECT_ROOT)/srcs
 OBJ_DIR = $(PROJECT_ROOT)/objs
 TEST_DIR = $(PROJECT_ROOT)/tests
