@@ -12,7 +12,6 @@
 
 #include "header.h"
 #include "terminal_coloring.h"
-#include "error_logger.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

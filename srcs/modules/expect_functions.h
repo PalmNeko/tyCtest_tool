@@ -13,9 +13,6 @@
 #ifndef EXPECT_FUNCTIONS_H
 # define EXPECT_FUNCTIONS_H
 
-# include "error_logger.h"
-# include "generic_print.h"
-# include "tyctest_assert_log_base.h"
 # include <string.h>
 # include "utils_str.h"
 

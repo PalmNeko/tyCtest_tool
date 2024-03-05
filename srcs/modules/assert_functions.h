@@ -13,10 +13,6 @@
 #ifndef ASSERT_FUNCTIONS_H
 # define ASSERT_FUNCTIONS_H
 
-# include "error_logger.h"
-# include "generic_print.h"
-# include "tyctest_assert_log_base.h"
-
 # include "header.h"
 # include "comparison.h"
 
