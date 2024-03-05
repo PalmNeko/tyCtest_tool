@@ -12,9 +12,9 @@
 
 # NAME
 NAME = "libtyctest.a"
-ifeq ($(MAKECMDGOALS), test)
+ifeq ($(findstring test,$(MAKECMDGOALS)), test)
 	NAME = "test"
-	CFLAGS += -g -O0
+#	CFLAGS += -g -fsanitize=address
 	COMPILE_SRC += $(TEST)
 endif
 
@@ -23,6 +23,7 @@ ifeq ($(OS),Windows_NT)
 else
 	CFLAGS += -D MAC
 endif
+CFLAGS += -MD -MP
 
 # directories
 MAKEFILE_DIR = $(dir $(lastword $(MAKEFILE_LIST)))
@@ -43,9 +44,12 @@ SRC =  $(shell find $(SRC_DIR) -name "*.c")
 TEST = $(shell find $(TEST_DIR) -name "*.c")
 COMPILE_SRC += $(SRC)
 COMPILE_OBJ = $(COMPILE_SRC:.c=.o)
+COMPILE_DEPENDS = $(COMPILE_SRC:.c=.d)
 
 # all rule
 all: $(NAME)
+
+-include $(COMPILE_DEPENDS)
 
 # make files rules
 $(NAME): $(COMPILE_OBJ) $(INCS)
@@ -54,15 +58,13 @@ $(NAME): $(COMPILE_OBJ) $(INCS)
 libtyctest_main.a: tests/main.o
 	ar rcs libtyctest_main.a $(filter %.o,$^)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
 test: $(COMPILE_OBJ) $(INCS)
 	$(CC) $(CFLAGS) -o $(NAME) $(filter %.o,$^)
 
 # .PHONY rules
 clean:
 	find . -name "*.o" -delete
+	find . -name "*.d" -delete
 
 fclean: clean
 	$(RM) $(NAME)

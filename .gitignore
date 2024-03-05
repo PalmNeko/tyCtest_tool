@@ -1,6 +1,7 @@
 
 objs/
 *.o
+*.d
 test
 *.exe
 *.a
