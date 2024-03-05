@@ -98,13 +98,11 @@ void output_t_macro_argument_info(const char *message, t_macro_argument_info inf
 
 void log_print(t_log_info *info)
 {
-	const int	indent_size = 4;
-
 	// message title
-	fprintf(stderr, "%*s%-*s: %s:%d\n",
-		1 * indent_size, "", 0, info->caption, info->filename, info->line);
-	fprintf(stderr, "%*s%-*s: Expected " BLUE"%s"CL " Actual\n",
-		2 * indent_size, "", 8, "Wish",  info->ope );
+	fprintf(stderr, "%4s%-s: %s:%d\n",
+		"", info->caption, info->filename, info->line);
+	fprintf(stderr, "%8s%-8s: Expected " BLUE"%s"CL " Actual\n",
+		"", "Wish",  info->ope);
 	output_t_macro_argument_info("Expected", info->expect_info);
 	output_t_macro_argument_info("Actual", info->actual_info);
 	return ;
