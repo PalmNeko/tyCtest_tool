@@ -4,10 +4,13 @@ test tool for lang c.(42Tokyo)
 
 # Install
 
-1. download.
-2. run `sh install.sh` at folder where you want to install.
-	(create `includes/tyctest/*.h` and `libs/libtyctest.a`)
-3. done.
+run commands (If make public repository, will replace curl)
+
+```
+git clone git@github.com:PalmNeko/tyCtest_tool.git tyCtest_tool
+bash tyCtest_tool/install.sh
+rm -rf tyCtest_tool
+```
 
 # Uninstall
 
