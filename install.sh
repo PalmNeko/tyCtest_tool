@@ -21,10 +21,11 @@ Major dependency programs when install:
 
 function clean() {
 	cd $INSTALL_DIR
-	rm -i "${INSTALL_DIR}/libs/$NAME"
-	rm -i "${INSTALL_DIR}/libs/libtyctest_main.a"
-	rm -i "${INSTALL_DIR}/includes/tyctest"
-	rm -r $TMP_DIR
+	rm -rf "${INSTALL_DIR}/libs/$NAME"
+	rm -rf "${INSTALL_DIR}/libs/libtyctest_main.a"
+	rm -rf "${INSTALL_DIR}/includes/tyctest"
+	rm -rf "${INSTALL_DIR}/bin/uninstall_tyctest.sh"
+	rm -rf $TMP_DIR
 	echo "install fail."
 }
 trap clean ERR
@@ -38,7 +39,9 @@ make libtyctest_main.a
 
 mkdir -p "${INSTALL_DIR}/includes/tyctest"
 mkdir -p "${INSTALL_DIR}/libs/"
+mkdir -p "${INSTALL_DIR}/bin/"
 
+cp unsintall_tyctest.sh "${INSTALL_DIR}/bin"
 cp "$NAME" "${INSTALL_DIR}/libs"
 cp libtyctest_main.a "${INSTALL_DIR}/libs"
 
