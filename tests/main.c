@@ -29,8 +29,8 @@ int	split_group_section(char *value, char **group, char **section)
 int	main(int argc, char *argv[])
 {
 	int		index;
-	char	*group;
-	char	*section;
+	char	*group = NULL;
+	char	*section = NULL;
 
 	if (argc == 1)
 	{

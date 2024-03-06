@@ -40,7 +40,7 @@ char *strdup(const char *str)
 	copy = (char *)malloc(sizeof(char) * str_size);
 	if (copy == NULL)
 		return (NULL);
-	strncpy(copy, str, str_len);
+	strncpy(copy, str, str_size);
 	copy[str_len] = '\0';
 	return (copy);
 }
