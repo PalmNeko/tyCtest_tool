@@ -41,9 +41,9 @@ mkdir -p "${INSTALL_DIR}/includes/tyctest"
 mkdir -p "${INSTALL_DIR}/libs/"
 mkdir -p "${INSTALL_DIR}/bin/"
 
-cp unsintall_tyctest.sh "${INSTALL_DIR}/bin"
 cp "$NAME" "${INSTALL_DIR}/libs"
 cp libtyctest_main.a "${INSTALL_DIR}/libs"
+cp uninstall_tyctest.sh "${INSTALL_DIR}/bin"
 
 HEADERS=$(find . -type f -name "*.h")
 for HEADER in $HEADERS
