@@ -34,7 +34,7 @@ git clone git@github.com:PalmNeko/tyCtest_tool.git $TMP_DIR
 
 cd "$PROJECT_DIR"
 
-make
+make || exit 1
 make libtyctest_main.a
 
 mkdir -p "${INSTALL_DIR}/includes/tyctest"
@@ -78,4 +78,5 @@ For update :
 
 Have a good test day.
 '
+cd ..
 rm -rf "$TMP_DIR"
