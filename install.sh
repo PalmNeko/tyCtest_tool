@@ -27,6 +27,7 @@ function clean() {
 	rm -rf "${INSTALL_DIR}/bin/uninstall_tyctest.sh"
 	rm -rf $TMP_DIR
 	echo "install fail."
+	exit 1
 }
 trap clean ERR
 
