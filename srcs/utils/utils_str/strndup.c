@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   strndup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 23:31:57 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 23:31:57 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:27:51 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
+
+#ifdef WINDOWS
 
 char *strndup(char *str, size_t len)
 {
@@ -44,3 +46,5 @@ char *strdup(const char *str)
 	copy[str_len] = '\0';
 	return (copy);
 }
+
+#endif
