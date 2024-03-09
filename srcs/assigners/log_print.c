@@ -70,6 +70,7 @@ print_as_function get_print_as_function(char *type)
 		{.f_print_as = print_as_char, .match_type = "char"},
 		{.f_print_as = print_as_char_pointer, .match_type = "char *"},
 		{.f_print_as = print_as_const_char_pointer, .match_type = "const char *"},
+		{.f_print_as = print_as_void_pointer, .match_type = "void *"},
 	};
 	const int ary_size = sizeof(print_as_functions) / sizeof(print_as_functions[0]);
 	int	i;

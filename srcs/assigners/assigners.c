@@ -131,3 +131,9 @@ void	*assign_const_char_pointer(void **variable, const char *value)
 	*(const char **)variable = value;
 	return (*variable);
 }
+
+void	*assign_void_pointer(void **variable, void *value)
+{
+	*variable = value;
+	return (*variable);
+}

@@ -83,3 +83,9 @@ void print_as_const_char_pointer(void *value)
 	fprintf(stderr, "%s", *(const char **)value);
 	return ;
 }
+
+void print_as_void_pointer(void *value)
+{
+	fprintf(stderr, "%p", value);
+	return ;
+}
