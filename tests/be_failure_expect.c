@@ -26,6 +26,7 @@ TEST(BeFailure, EXPECT_FALSE)
 TEST(BeFailure, EXPECT_EQ)
 {
 	EXPECT_EQ(ULLONG_MAX, (unsigned long long) 0);
+	EXPECT_EQ("abcdefg", NULL);
 }
 
 TEST(BeFailure, EXPECT_NE)
