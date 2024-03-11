@@ -5,7 +5,7 @@ set -e
 printf "Are you sure uninstall? (y/n) "
 read YN
 
-if [[ "$YN" != "y" ]] then
+if test "$YN" != "y" ; then
 	echo 'abort uninstall'
 	exit 0
 fi
