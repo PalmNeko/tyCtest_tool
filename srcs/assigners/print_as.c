@@ -74,13 +74,19 @@ void print_as_char(void *value)
 
 void print_as_char_pointer(void *value)
 {
-	fprintf(stderr, "%s", *(char **)value);
+	if (value == NULL)
+		fprintf(stderr, "%s", value);
+	else
+		fprintf(stderr, "%s", *(char **)value);
 	return ;
 }
 
 void print_as_const_char_pointer(void *value)
 {
-	fprintf(stderr, "%s", *(const char **)value);
+	if (value == NULL)
+		fprintf(stderr, "%s", value);
+	else
+		fprintf(stderr, "%s", *(const char **)value);
 	return ;
 }
 
