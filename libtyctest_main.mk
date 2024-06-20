@@ -1,23 +1,19 @@
 NAME = libtyctest_main.a
 SRCS = srcs/main.c
 CC = cc
-CFLAGS += -Wall -Werror -Wextra -std=c17 -MMD -MP
-OBJS = $(SRCS:.c:.o)
-DEPS = $(OBJS:.o:.d)
+CFLAGS += -Wall -Werror -Wextra -std=c17 -MMD -MP -I.
+OBJS = $(SRCS:.c=.o)
+DEPS = $(OBJS:.o=.d)
 
 ifeq ($(OS),Windows_NT)
 	CFLAGS += -D WINDOWS
-else ifeq ($(uname),Linux)
+else ifeq ($(shell uname),Linux)
 else
 	CFLAGS += -D MAC
 endif
 
 # all rule
 all: $(NAME)
-
-# make files rules
-$(NAME): $(OBJS)
-	ar rcs $@ $(OJBS)
 
 # .PHONY rules
 clean:
@@ -29,6 +25,16 @@ fclean: clean
 
 re: fclean all
 
+show:
+	@echo "SRCS:"
+	@echo "$(SRCS)"
+	@echo "OBJS:"
+	@echo "$(OBJS)"
+	@echo "CFLAGS: $(CFLAGS)"
+
 .PHONY: all clean fclean re
+
+$(NAME): $(OBJS)
+	ar rcs $@ $(OBJS)
 
 -include $(DEPS)
