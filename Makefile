@@ -1,74 +1,21 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/29 15:29:13 by tookuyam          #+#    #+#              #
-#    Updated: 2024/06/20 15:16:52 by tookuyam         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
-# NAME
-NAME = libtyctest.a
-TEST = test
-ifeq ($(findstring test,$(MAKECMDGOALS)), test)
-	COMPILE_SRC += $(TEST_SRC)
-endif
+LIBTYCTEST_MAIN = libtyctest_main.a
+LIBTYCTEST = libtyctest.a
 
-ifeq ($(OS),Windows_NT)
-	CFLAGS += -D WINDOWS
-	TEST = test.exe
-else
-	CFLAGS += -D MAC
-	TEST = test
-endif
-CFLAGS += -MMD -MP
+all: $(LIBTYCTEST_MAIN) $(LIBTYCTEST)
 
-# directories
-PROJECT_ROOT = .
-SRC_DIR = $(PROJECT_ROOT)/srcs
-OBJ_DIR = $(PROJECT_ROOT)/objs
-TEST_DIR = $(PROJECT_ROOT)/tests
-INC_DIRS = $(dir $(INCS))
-
-$(shell mkdir -p $(OBJ_DIR))
-
-# compiles
-CC = cc
-INCS = $(shell find $(PROJECT_ROOT) -type f -name "*.h")
-CFLAGS += -Wall -Werror -Wextra -std=c17
-
-SRC =  $(shell find $(SRC_DIR) -name "*.c")
-TEST_SRC = $(shell find $(TEST_DIR) -name "*.c")
-COMPILE_SRC += $(SRC)
-COMPILE_OBJ = $(COMPILE_SRC:.c=.o)
-COMPILE_DEPENDS = $(COMPILE_SRC:.c=.d)
-
-# all rule
-all: $(NAME)
-
--include $(COMPILE_DEPENDS)
-
-# make files rules
-$(NAME): $(COMPILE_OBJ)
-	ar rcs $(NAME) $(filter %.o,$^)
-
-libtyctest_main.a: tests/main.o
-	ar rcs libtyctest_main.a $(filter %.o,$^)
-
-$(TEST): $(COMPILE_OBJ)
-	$(CC) $(CFLAGS) -o $@ $(filter %.o,$^)
-
-# .PHONY rules
 clean:
-	find . -name "*.o" -delete
-	find . -name "*.d" -delete
+	make -f $(LIBTYCTEST_MAIN:.a=.mk) clean
+	make -f $(LIBTYCTEST:.a=.mk) clean
 
 fclean: clean
-	$(RM) $(NAME)
+	make -f $(LIBTYCTEST_MAIN:.a=.mk) fclean
+	make -f $(LIBTYCTEST:.a=.mk) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+debug: CFLAGS += -g -O0
+debug: re
+
+%.a: %.mk
+	CFLAGS="$(CFLAGS)" make -f $^
