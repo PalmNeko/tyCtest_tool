@@ -1,5 +1,10 @@
 {
 	"files.associations": {
-		"utils_str.h": "c"
+		"utils_str.h": "c",
+		"register_functions.h": "c",
+		"assert_functions.h": "c",
+		"test_runner.h": "c",
+		"comparison.h": "c",
+		"header.h": "c"
 	}
 }

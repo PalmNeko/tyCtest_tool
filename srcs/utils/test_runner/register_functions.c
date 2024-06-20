@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   register_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 22:23:38 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 19:13:32 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:19:37 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "register_functions.h"
-#include "terminal_coloring.h"
-#include "test_runner.h"
+#include "../terminal_formats/terminal_coloring.h"
+#include "../test_runner/test_runner.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>

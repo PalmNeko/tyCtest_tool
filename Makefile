@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/29 15:29:13 by tookuyam          #+#    #+#              #
-#    Updated: 2023/11/01 14:29:50 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/06/20 15:16:52 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ $(shell mkdir -p $(OBJ_DIR))
 # compiles
 CC = cc
 INCS = $(shell find $(PROJECT_ROOT) -type f -name "*.h")
-CFLAGS += -Wall -Werror -Wextra -std=c17 $(addprefix -I,$(INC_DIRS))
+CFLAGS += -Wall -Werror -Wextra -std=c17
 
 SRC =  $(shell find $(SRC_DIR) -name "*.c")
 TEST_SRC = $(shell find $(TEST_DIR) -name "*.c")

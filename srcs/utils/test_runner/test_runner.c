@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   test_runner.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:06:27 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/10/31 19:14:23 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:20:46 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "terminal_coloring.h"
+#include "../terminal_formats/terminal_coloring.h"
 #include "test_runner.h"
 #include "register_functions.h"
 #include "test_runner_adapter.h"

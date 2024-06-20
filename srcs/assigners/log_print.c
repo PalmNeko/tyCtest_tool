@@ -6,13 +6,13 @@
 /*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:07:46 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/04 11:07:46 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:18:43 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-#include "terminal_coloring.h"
-#include "utils_str.h"
+#include "../utils/terminal_formats/terminal_coloring.h"
+#include "../utils/utils_str/utils_str.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
