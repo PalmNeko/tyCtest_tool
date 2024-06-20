@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expect_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:42:35 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 13:17:26 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:12:42 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define EXPECT_FUNCTIONS_H
 
 # include <string.h>
-# include "utils_str.h"
+# include "../utils/utils_str/utils_str.h"
 
 # define __ERROR_MESSAGE "\033[33mError\033[m"
 

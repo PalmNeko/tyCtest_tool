@@ -2,11 +2,11 @@
 #ifndef TYCTEST_H
 # define TYCTEST_H
 
-# include "register_functions.h"
-# include "register_macro.h"
-# include "test_runner.h"
-# include "assert_functions.h"
-# include "expect_functions.h"
+# include "./utils/test_runner/register_functions.h"
+# include "./utils/test_runner/register_macro.h"
+# include "./utils/test_runner/test_runner.h"
+# include "modules/assert_functions.h"
+# include "modules/expect_functions.h"
 
 /**
  * create tests.

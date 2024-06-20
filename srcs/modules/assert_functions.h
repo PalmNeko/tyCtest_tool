@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   assert_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tookuyam <tookuyam@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:36:46 by tookuyam          #+#    #+#             */
-/*   Updated: 2023/11/01 13:21:21 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:11:34 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASSERT_FUNCTIONS_H
 # define ASSERT_FUNCTIONS_H
 
-# include "header.h"
+# include "../assigners/header.h"
 # include "comparison.h"
 
 /**
