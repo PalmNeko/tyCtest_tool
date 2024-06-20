@@ -12,6 +12,12 @@ bash tyCtest_tool/install.sh
 rm -rf tyCtest_tool
 ```
 
+or
+
+```
+bash -c $(curl https://raw.githubusercontent.com/PalmNeko/tyCtest_tool/master/install.sh)
+```
+
 # Uninstall
 
 1. delete `includes/tyctest` `libs/libtyctest_main.a` and `libs/libtyctest.a` in your install directory.
