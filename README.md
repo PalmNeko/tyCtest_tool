@@ -15,7 +15,7 @@ rm -rf tyCtest_tool
 or
 
 ```
-bash -c $(curl https://raw.githubusercontent.com/PalmNeko/tyCtest_tool/master/install.sh)
+bash -c "$(curl https://raw.githubusercontent.com/PalmNeko/tyCtest_tool/master/install.sh)"
 ```
 
 # Uninstall
