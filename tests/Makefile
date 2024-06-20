@@ -6,7 +6,7 @@
 #    By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/29 15:29:13 by tookuyam          #+#    #+#              #
-#    Updated: 2024/06/20 15:16:00 by tookuyam         ###   ########.fr        #
+#    Updated: 2024/06/20 16:28:34 by tookuyam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+debug: CFLAGS += -g -O0
+debug: re
 
 # make files rules
 $(NAME): $(OBJS)
