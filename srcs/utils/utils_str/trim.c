@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#define _GNU_SOURCE
 #include <string.h>
 #include <stdlib.h>
 #include "utils_str.h"
