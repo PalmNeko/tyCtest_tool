@@ -6,7 +6,7 @@
 /*   By: tookuyam <tookuyam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:33:20 by tookuyam          #+#    #+#             */
-/*   Updated: 2024/03/04 10:33:20 by tookuyam         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:31:09 by tookuyam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,117 +17,154 @@
 
 void	*assign_bool(void **variable, bool value)
 {
-	*variable = (void *)malloc(sizeof(bool));
-	if (*variable == NULL)
-		return (NULL);
-	*(bool *)(*variable) = value;
+	static bool	inner_value[2];
+	static int	cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_short(void **variable, short value)
 {
-	*variable = (void *)malloc(sizeof(short));
-	if (*variable == NULL)
-		return (NULL);
-	*(short *)(*variable) = value;
+	static short	inner_value[2];
+	static int		cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_int(void **variable, int value)
 {
-	*variable = (void *)malloc(sizeof(int));
-	if (*variable == NULL)
-		return (NULL);
-	*(int *)(*variable) = value;
+	static int	inner_value[2];
+	static int	cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_long(void **variable, long value)
 {
-	*variable = (void *)malloc(sizeof(long));
-	if (*variable == NULL)
-		return (NULL);
-	*(long *)(*variable) = value;
+	static long	inner_value[2];
+	static int	cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_long_long(void **variable, long long value)
 {
-	*variable = (void *)malloc(sizeof(long long));
-	if (*variable == NULL)
-		return (NULL);
-	*(long long *)(*variable) = value;
+	static long long	inner_value[2];
+	static int			cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_unsigned_int(void **variable, unsigned int value)
 {
-	*variable = (void *)malloc(sizeof(unsigned int));
-	if (*variable == NULL)
-		return (NULL);
-	*(unsigned int *)(*variable) = value;
+	static unsigned int	inner_value[2];
+	static int	cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_unsigned_long(void **variable, unsigned long value)
 {
-	*variable = (void *)malloc(sizeof(unsigned long));
-	if (*variable == NULL)
-		return (NULL);
-	*(unsigned long *)(*variable) = value;
+	static unsigned long	inner_value[2];
+	static int				cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_unsigned_long_long(void **variable, unsigned long long value)
 {
-	*variable = (void *)malloc(sizeof(unsigned long long));
-	if (*variable == NULL)
-		return (NULL);
-	*(unsigned long long *)(*variable) = value;
+	static unsigned long long	inner_value[2];
+	static int					cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_float(void **variable, float value)
 {
-	*variable = (void *)malloc(sizeof(float));
-	if (*variable == NULL)
-		return (NULL);
-	*(float *)(*variable) = value;
+	static float	inner_value[2];
+	static int		cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_double(void **variable, double value)
 {
-	*variable = (void *)malloc(sizeof(double));
-	if (*variable == NULL)
-		return (NULL);
-	*(double *)(*variable) = value;
+	static double	inner_value[2];
+	static int		cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_char(void **variable, char value)
 {
-	*variable = (void *)malloc(sizeof(char));
-	if (*variable == NULL)
-		return (NULL);
-	*(char *)(*variable) = value;
+	static char	inner_value[2];
+	static int	cnt;
+
+	inner_value[cnt] = value;
+	*variable = &inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_char_pointer(void **variable, char *value)
 {
-	*variable = (void *)value;
+	static char	*inner_value[2];
+	static int	cnt;
+
+	inner_value[cnt] = value;
+	*variable = inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_const_char_pointer(void **variable, const char *value)
 {
-	*variable = (void *)value;
+	static char	*inner_value[2];
+	static int	cnt;
+
+	inner_value[cnt] = (char *)value;
+	*variable = inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
 
 void	*assign_void_pointer(void **variable, void *value)
 {
-	*variable = value;
+	static void	*inner_value[2];
+	static int	cnt;
+
+	inner_value[cnt] = value;
+	*variable = inner_value[cnt];
+	cnt = (cnt + 1) % 2;
 	return (*variable);
 }
